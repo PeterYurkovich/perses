@@ -81,7 +81,7 @@ sequenceDiagram
     participant br as Perses Frontend
     participant rp as Perses Backend
     participant op as External Identity Provider
-    
+
     hu->>br: Login with OIDC provider (e.g Azure AD)
     activate br
     br->>rp: GET /api/auth/providers/{oidc|oauth}/{slug_id}/login
@@ -142,7 +142,7 @@ sequenceDiagram
     participant pc as percli Command Line
     participant rp as Perses Backend
     participant op as External Identity Provider
-    
+
     hu->>pc: EXEC: percli login
     activate pc
     pc->>rp: GET /api/config
@@ -227,7 +227,7 @@ sequenceDiagram
     participant pc as percli Command Line
     participant rp as Perses Backend
     participant op as External Identity Provider
-    
+
     ro->>pc: EXEC: percli login --provider <slug_id> --client-id <client_id> --client-secret <client_secret>
     activate pc
     pc->>rp: GET /api/config
@@ -261,4 +261,99 @@ sequenceDiagram
     deactivate rp
     pc->>ro: PRINT: Projects list
     deactivate pc
+```
+
+
+### => Login from external OIDC provider with interactive flow, through WEB UI, Authorize using Kubernetes. (`authorization_code`)
+
+Perses can login to a Kubernetes cluster which has OIDC enabled on the API Server [link](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens).
+
+```mermaid
+sequenceDiagram
+    actor hu as John
+    #actor ro as Robot
+    participant br as Perses Frontend
+    participant rp as Perses Backend
+    participant op as External Identity Provider
+    participant k8s as Kubernetes
+
+    hu->>br: Login with OIDC provider (e.g Azure AD)
+    activate br
+    br->>rp: GET /api/auth/providers/{oidc|oauth}/{slug_id}/login
+    activate rp
+    rp->>br: 302: redirect to Provider
+    deactivate rp
+    br->>op: /oauth/authorize
+    activate op
+    op->>br: 302: redirect to Perses
+    deactivate op
+    br->>rp: GET /api/auth/providers/{oidc|oauth}/{slug_id}/callback?code=...
+    activate rp
+    rp->>op: GET /oauth/token
+    activate op
+    op->>rp: 200: id_token & access_token
+    deactivate op
+    rp->>op: GET /api/userinfo<br/> (endpoint from .well-known URL)
+    activate op
+    op->>rp: 200: User Info
+    deactivate op
+    Note right of rp: User Info + id token are<br/> used to sync user in database
+    rp->>rp: Create or Update user in DB
+    Note right of rp: A new session is created<br /> with a new signed access_token+refresh_token
+    rp->>br: 200: save session in cookie
+    deactivate rp
+    br->>hu: Home Page
+    deactivate br
+    hu->>br: Click on Projects
+    activate br
+    br->>rp: GET /api/v1/projects
+    activate rp
+    rp->>k8s: TokenReview token: id_token
+    activate k8s
+    k8s->>op: Verify token
+    activate op
+    op->>op: Verify Token
+    op->>k8s: 200: ok
+    deactivate op
+    k8s->>rp: 200 authenticated: true
+    deactivate k8s
+    rp->>k8s: SubjectAccessReview
+    activate k8s
+    k8s->>k8s: Verify Access
+    k8s->>rp: 200 allowed: true
+    deactivate k8s
+    rp->>br: 200: projects list
+    deactivate rp
+    br->>hu: Projects Page
+    deactivate br
+```
+
+### => Authorize an embedded frontend UI by forwarding the Authorization header. (`device_code`)
+
+```mermaid
+sequenceDiagram
+    actor hu as John
+    #actor ro as Robot
+    participant br as Embedded Frontend
+    participant rp as Perses Backend
+    participant k8s as Kubernetes
+
+    hu->>br: Click on Projects
+    activate br
+    br->>rp: GET /api/v1/projects
+    activate rp
+    rp->>k8s: TokenReview token: Authorization Header
+    activate k8s
+    k8s->>k8s: Verify token
+    k8s->>rp: 200 authenticated: true
+    deactivate k8s
+    rp->>k8s: SubjectAccessReview
+    activate k8s
+    k8s->>k8s: Verify Access
+    k8s->>rp: 200 allowed: true
+    deactivate k8s
+    rp->>br: 200: projects list
+    deactivate rp
+    br->>hu: Projects Page
+    deactivate br
 ```
