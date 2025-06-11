@@ -121,7 +121,7 @@ func (p *OAuthProvider) Verify() error {
 }
 
 type KubernetesProvider struct {
-	Enabled    bool   `json:"enabled" yaml:"enabled"`
+	Enabled    bool   `json:"enabled,omitempty" yaml:"enabled,omitempty"`
 	Kubeconfig string `json:"kubeconfig,omitempty" yaml:"kubeconfig,omitempty"`
 }
 
