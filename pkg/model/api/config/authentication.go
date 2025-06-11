@@ -134,7 +134,7 @@ func (p *KubernetesProvider) Verify() error {
 
 type AuthProviders struct {
 	EnableNative       bool               `json:"enable_native" yaml:"enable_native"`
-	KubernetesProvider KubernetesProvider `json:"kubernetes,omitzero" yaml:"kubernetes,omitempty"`
+	KubernetesProvider KubernetesProvider `json:"kubernetes,omitempty" yaml:"kubernetes,omitempty"`
 	OAuth              []OAuthProvider    `json:"oauth,omitempty" yaml:"oauth,omitempty"`
 	OIDC               []OIDCProvider     `json:"oidc,omitempty" yaml:"oidc,omitempty"`
 }
