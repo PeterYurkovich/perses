@@ -19,11 +19,11 @@ import (
 	"testing"
 	"time"
 
-	v1 "github.com/perses/perses/pkg/model/api/v1"
-	"github.com/perses/perses/pkg/model/api/v1/common"
-	"github.com/perses/perses/pkg/model/api/v1/dashboard"
-	"github.com/perses/perses/pkg/model/api/v1/plugin"
-	"github.com/perses/perses/pkg/model/api/v1/variable"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/dashboard"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/plugin"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/variable"
 	"github.com/stretchr/testify/assert"
 )
 

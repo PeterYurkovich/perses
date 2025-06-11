@@ -3,7 +3,7 @@
 ## Constructor
 
 ```golang
-import "github.com/perses/perses/go-sdk/query"
+import "github.com/peteryurkovich/perses/go-sdk/query"
 
 var options []query.Option
 query.New(options...)
@@ -29,9 +29,9 @@ See the related documentation for each query plugin.
 package main
 
 import (
-	"github.com/perses/perses/go-sdk/dashboard"
-	"github.com/perses/perses/go-sdk/panel"
-	panelgroup "github.com/perses/perses/go-sdk/panel-group"
+	"github.com/peteryurkovich/perses/go-sdk/dashboard"
+	"github.com/peteryurkovich/perses/go-sdk/panel"
+	panelgroup "github.com/peteryurkovich/perses/go-sdk/panel-group"
 	"github.com/perses/plugins/prometheus/sdk/go/query"
 	timeseries "github.com/perses/plugins/timeserieschart/sdk/gop"
 )

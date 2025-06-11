@@ -20,12 +20,12 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/perses/perses/internal/api/plugin"
-	"github.com/perses/perses/internal/api/plugin/migrate"
-	"github.com/perses/perses/internal/api/plugin/schema"
-	persesCMD "github.com/perses/perses/internal/cli/cmd"
-	"github.com/perses/perses/internal/cli/cmd/plugin/config"
-	"github.com/perses/perses/internal/cli/output"
+	"github.com/peteryurkovich/perses/internal/api/plugin"
+	"github.com/peteryurkovich/perses/internal/api/plugin/migrate"
+	"github.com/peteryurkovich/perses/internal/api/plugin/schema"
+	persesCMD "github.com/peteryurkovich/perses/internal/cli/cmd"
+	"github.com/peteryurkovich/perses/internal/cli/cmd/plugin/config"
+	"github.com/peteryurkovich/perses/internal/cli/output"
 	"github.com/spf13/cobra"
 )
 

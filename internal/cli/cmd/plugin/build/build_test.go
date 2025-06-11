@@ -17,7 +17,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	cmdTest "github.com/perses/perses/internal/cli/test"
+	cmdTest "github.com/peteryurkovich/perses/internal/cli/test"
 )
 
 func TestPluginBuildCMD(t *testing.T) {

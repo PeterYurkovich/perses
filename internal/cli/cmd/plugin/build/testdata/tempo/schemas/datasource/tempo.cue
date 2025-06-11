@@ -14,8 +14,8 @@
 package model
 
 import (
-	"github.com/perses/perses/cue/common"
-	commonProxy "github.com/perses/perses/cue/common/proxy"
+	"github.com/peteryurkovich/perses/cue/common"
+	commonProxy "github.com/peteryurkovich/perses/cue/common/proxy"
 )
 
 kind: "TempoDatasource"

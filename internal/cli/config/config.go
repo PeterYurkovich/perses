@@ -21,9 +21,9 @@ import (
 	"path/filepath"
 	"reflect"
 
-	"github.com/perses/perses/pkg/client/api"
-	"github.com/perses/perses/pkg/client/config"
-	"github.com/perses/perses/pkg/model/api/v1/secret"
+	"github.com/peteryurkovich/perses/pkg/client/api"
+	"github.com/peteryurkovich/perses/pkg/client/config"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/secret"
 	"github.com/sirupsen/logrus"
 )
 

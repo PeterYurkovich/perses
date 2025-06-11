@@ -16,7 +16,7 @@ package dashboard
 import (
 	"time"
 
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 type Option func(dashboard *Builder) error

@@ -17,7 +17,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/perses/perses/pkg/model/api/v1/secret"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/secret"
 	"github.com/zitadel/oidc/v3/pkg/oidc"
 )
 

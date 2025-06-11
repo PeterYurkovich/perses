@@ -4,10 +4,10 @@ go 1.24.0
 
 toolchain go1.24.2
 
-replace github.com/perses/perses => ../../../../../../../ // Use current version
+replace github.com/peteryurkovich/perses => ../../../../../../../ // Use current version
 
 require (
-	github.com/perses/perses v0.50.1
+	github.com/peteryurkovich/perses v0.50.1
 	github.com/perses/plugins/prometheus v0.6.0
 	github.com/perses/plugins/timeserieschart v0.8.0
 )

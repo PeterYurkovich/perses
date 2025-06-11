@@ -14,9 +14,9 @@
 package view
 
 import (
-	"github.com/perses/perses/internal/api/interface/v1/view"
-	"github.com/perses/perses/internal/api/utils"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/view"
+	"github.com/peteryurkovich/perses/internal/api/utils"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 	"github.com/prometheus/client_golang/prometheus"
 )
 

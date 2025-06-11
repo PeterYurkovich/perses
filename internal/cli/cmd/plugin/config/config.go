@@ -17,7 +17,7 @@ import (
 	"path/filepath"
 
 	"github.com/perses/common/config"
-	"github.com/perses/perses/internal/cli/file"
+	"github.com/peteryurkovich/perses/internal/cli/file"
 )
 
 const (

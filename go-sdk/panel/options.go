@@ -14,9 +14,9 @@
 package panel
 
 import (
-	"github.com/perses/perses/go-sdk/link"
-	"github.com/perses/perses/go-sdk/query"
-	"github.com/perses/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/go-sdk/link"
+	"github.com/peteryurkovich/perses/go-sdk/query"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
 )
 
 func Title(title string) Option {

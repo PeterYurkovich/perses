@@ -18,7 +18,7 @@ import (
 	"strings"
 
 	"github.com/goreleaser/goreleaser/v2/pkg/config"
-	"github.com/perses/perses/internal/cli/file"
+	"github.com/peteryurkovich/perses/internal/cli/file"
 	"github.com/sirupsen/logrus"
 )
 

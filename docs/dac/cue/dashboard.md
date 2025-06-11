@@ -8,7 +8,7 @@ The Dashboard builder helps creating dashboards in the format expected by Perses
 package myDaC
 
 import (
-	dashboardBuilder "github.com/perses/perses/cue/dac-utils/dashboard"
+	dashboardBuilder "github.com/peteryurkovich/perses/cue/dac-utils/dashboard"
 )
 
 dashboardBuilder & {} // input parameters expected
@@ -33,10 +33,10 @@ dashboardBuilder & {} // input parameters expected
 package myDaC
 
 import (
-	dashboardBuilder "github.com/perses/perses/cue/dac-utils/dashboard"
-	panelGroupsBuilder "github.com/perses/perses/cue/dac-utils/panelgroups"
-	varGroupBuilder "github.com/perses/perses/cue/dac-utils/variable/group"
-	textVarBuilder "github.com/perses/perses/cue/dac-utils/variable/text"
+	dashboardBuilder "github.com/peteryurkovich/perses/cue/dac-utils/dashboard"
+	panelGroupsBuilder "github.com/peteryurkovich/perses/cue/dac-utils/panelgroups"
+	varGroupBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/group"
+	textVarBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/text"
 	panelBuilder "github.com/perses/plugins/prometheus/sdk/cue/panel"
 	promQLVarBuilder "github.com/perses/plugins/prometheus/sdk/cue/variable/promql"
 	promFilterBuilder "github.com/perses/plugins/prometheus/sdk/cue/filter"

@@ -18,10 +18,10 @@ import (
 	"slices"
 
 	"github.com/labstack/echo/v4"
-	"github.com/perses/perses/internal/api/crypto"
-	"github.com/perses/perses/internal/api/interface/v1/user"
+	"github.com/peteryurkovich/perses/internal/api/crypto"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/user"
 
-	v1Role "github.com/perses/perses/pkg/model/api/v1/role"
+	v1Role "github.com/peteryurkovich/perses/pkg/model/api/v1/role"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 	"k8s.io/apiserver/pkg/authorization/authorizer"

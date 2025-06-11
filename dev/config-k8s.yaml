@@ -12,9 +12,14 @@ security:
           - create
         scopes:
           - Project
+    kubernetes: true
   authentication:
+    disable_sign_up: true
     providers:
-      enable_native: true
+      enable_native: false
+      kubernetes:
+        enabled: true
+        kubeconfig: /home/pyurkovi/.kube/config
 
 database:
   file:
@@ -55,4 +60,3 @@ frontend:
 plugin:
   enable_dev: true
   archive_path: "/home/pyurkovi/projects/forks/perses/plugins-archive"
-

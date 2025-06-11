@@ -19,12 +19,12 @@ import (
 	"path/filepath"
 	"sync"
 
-	"github.com/perses/perses/internal/api/plugin/migrate"
-	"github.com/perses/perses/internal/api/plugin/schema"
-	"github.com/perses/perses/internal/test"
-	"github.com/perses/perses/pkg/model/api/config"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
-	"github.com/perses/perses/pkg/model/api/v1/plugin"
+	"github.com/peteryurkovich/perses/internal/api/plugin/migrate"
+	"github.com/peteryurkovich/perses/internal/api/plugin/schema"
+	"github.com/peteryurkovich/perses/internal/test"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/plugin"
 	"github.com/sirupsen/logrus"
 )
 

@@ -17,9 +17,9 @@ import (
 	"encoding/json"
 
 	"cuelang.org/go/cue/build"
-	"github.com/perses/perses/pkg/model/api/v1/common"
-	"github.com/perses/perses/pkg/model/api/v1/dashboard"
-	"github.com/perses/perses/pkg/model/api/v1/variable"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/dashboard"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/variable"
 	"github.com/sirupsen/logrus"
 )
 

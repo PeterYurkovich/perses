@@ -13,7 +13,7 @@
 
 package v1
 
-import modelAPI "github.com/perses/perses/pkg/model/api"
+import modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
 
 type PartialEntity struct {
 	Kind     Kind     `json:"kind" yaml:"kind"`

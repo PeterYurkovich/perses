@@ -25,8 +25,8 @@ import (
 	"cuelang.org/go/cue/cuecontext"
 	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/cue/load"
-	testUtils "github.com/perses/perses/internal/test"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	testUtils "github.com/peteryurkovich/perses/internal/test"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/require"
 )

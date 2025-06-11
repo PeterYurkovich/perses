@@ -22,10 +22,10 @@ import (
 	"reflect"
 	"strings"
 
-	databaseModel "github.com/perses/perses/internal/api/database/model"
-	modelAPI "github.com/perses/perses/pkg/model/api"
-	"github.com/perses/perses/pkg/model/api/config"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	databaseModel "github.com/peteryurkovich/perses/internal/api/database/model"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 	"gopkg.in/yaml.v3"
 )
 
@@ -62,7 +62,7 @@ func (d *DAO) Create(entity modelAPI.Entity) error {
 	// Flatten the metadata in case the config is activated.
 	// We are modifying the metadata to be sure the user will acknowledge this config.
 	// Also, it will avoid an issue with the permission when activated.
-	// See https://github.com/perses/perses/issues/1721 for more details.
+	// See https://github.com/peteryurkovich/perses/issues/1721 for more details.
 	entity.GetMetadata().Flatten(d.CaseSensitive)
 	key, generateIDErr := generateID(modelV1.Kind(entity.GetKind()), entity.GetMetadata())
 	if generateIDErr != nil {

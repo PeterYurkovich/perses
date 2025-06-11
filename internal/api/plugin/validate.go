@@ -17,8 +17,8 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/perses/perses/internal/cli/file"
-	"github.com/perses/perses/pkg/model/api/v1/plugin"
+	"github.com/peteryurkovich/perses/internal/cli/file"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/plugin"
 )
 
 const (

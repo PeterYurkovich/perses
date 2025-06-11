@@ -328,7 +328,7 @@ sequenceDiagram
 
 ## Kubernetes provider
 
-The Kubernetes Provider is designed to be utilized in conjunction with the [Perses Operator](https://github.com/perses/perses-operator) inside of a Kubernetes cluster.
+The Kubernetes Provider is designed to be utilized in conjunction with the [Perses Operator](https://github.com/peteryurkovich/perses-operator) inside of a Kubernetes cluster.
 When this feature is enabled, Perses expects a `Authorization` header to be included in any request
 to the backend, in the form of `bearer TOKEN_AAABBBAA`. A typical deployment will use an
 Authentication proxy in-front of the Perses deployment to add the token to each request. The Perses

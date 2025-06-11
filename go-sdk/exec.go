@@ -20,7 +20,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/perses/perses/go-sdk/dashboard"
+	"github.com/peteryurkovich/perses/go-sdk/dashboard"
 	"gopkg.in/yaml.v3"
 )
 

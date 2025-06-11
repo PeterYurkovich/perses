@@ -17,7 +17,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	modelAPI "github.com/perses/perses/pkg/model/api"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
 )
 
 type FolderSpec struct {

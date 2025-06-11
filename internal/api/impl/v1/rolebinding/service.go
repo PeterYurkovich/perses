@@ -18,14 +18,14 @@ import (
 	"fmt"
 
 	"github.com/brunoga/deep"
-	apiInterface "github.com/perses/perses/internal/api/interface"
-	"github.com/perses/perses/internal/api/interface/v1/role"
-	"github.com/perses/perses/internal/api/interface/v1/rolebinding"
-	"github.com/perses/perses/internal/api/interface/v1/user"
-	"github.com/perses/perses/internal/api/plugin/schema"
-	"github.com/perses/perses/internal/api/rbac"
-	"github.com/perses/perses/pkg/model/api"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	apiInterface "github.com/peteryurkovich/perses/internal/api/interface"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/role"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/rolebinding"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/user"
+	"github.com/peteryurkovich/perses/internal/api/plugin/schema"
+	"github.com/peteryurkovich/perses/internal/api/rbac"
+	"github.com/peteryurkovich/perses/pkg/model/api"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 	"github.com/sirupsen/logrus"
 )
 
@@ -96,7 +96,7 @@ func (s *service) update(entity *v1.RoleBinding, parameters apiInterface.Paramet
 	}
 
 	// If you do want to change the role for a binding, you need to remove the binding object and create a replacement.
-	// More info at: https://github.com/perses/perses/blob/main/docs/auth/authorization.md#rolebinding-and-globalrolebinding-update-restriction
+	// More info at: https://github.com/peteryurkovich/perses/blob/main/docs/auth/authorization.md#rolebinding-and-globalrolebinding-update-restriction
 	if entity.Spec.Role != oldEntity.Spec.Role {
 		return nil, apiInterface.HandleBadRequestError("spec.role can't be updated")
 	}

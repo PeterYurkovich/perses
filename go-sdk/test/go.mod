@@ -4,7 +4,7 @@ go 1.24.0
 
 toolchain go1.24.2
 
-replace github.com/perses/perses => ../../ // Use current version
+replace github.com/peteryurkovich/perses => ../../ // Use current version
 
 require (
 	github.com/perses/perses v0.50.1

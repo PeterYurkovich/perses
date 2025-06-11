@@ -18,10 +18,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/perses/perses/internal/api/plugin"
-	"github.com/perses/perses/internal/api/plugin/schema"
-	"github.com/perses/perses/internal/api/validate"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/internal/api/plugin"
+	"github.com/peteryurkovich/perses/internal/api/plugin/schema"
+	"github.com/peteryurkovich/perses/internal/api/validate"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 	"github.com/sirupsen/logrus"
 )
 

@@ -8,7 +8,7 @@ We are using GitHub as our main development and discussion forum.
 - We use pull requests and issues for tracking the development of features that are either uncontroversial and/or small
   and don't need much up-front discussion.
 - If you are thinking about contributing something more involved, you can use
-  the [GitHub discussions](https://github.com/perses/perses/discussions) feature for design discussions before sending a
+  the [GitHub discussions](https://github.com/peteryurkovich/perses/discussions) feature for design discussions before sending a
   pull request or creating a feature request issue.
 - Be sure to add [DCO signoffs](https://github.com/probot/dco#how-it-works) to all of your commits.
 

@@ -19,14 +19,14 @@ import (
 	"strings"
 
 	"github.com/labstack/echo/v4"
-	"github.com/perses/perses/internal/api/crypto"
-	databaseModel "github.com/perses/perses/internal/api/database/model"
-	apiInterface "github.com/perses/perses/internal/api/interface"
-	"github.com/perses/perses/internal/api/rbac"
-	"github.com/perses/perses/internal/api/utils"
-	"github.com/perses/perses/pkg/model/api"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
-	"github.com/perses/perses/pkg/model/api/v1/role"
+	"github.com/peteryurkovich/perses/internal/api/crypto"
+	databaseModel "github.com/peteryurkovich/perses/internal/api/database/model"
+	apiInterface "github.com/peteryurkovich/perses/internal/api/interface"
+	"github.com/peteryurkovich/perses/internal/api/rbac"
+	"github.com/peteryurkovich/perses/internal/api/utils"
+	"github.com/peteryurkovich/perses/pkg/model/api"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/role"
 	"github.com/sirupsen/logrus"
 )
 

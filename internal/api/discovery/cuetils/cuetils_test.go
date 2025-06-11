@@ -18,10 +18,10 @@ import (
 	"testing"
 
 	"cuelang.org/go/cue/cuecontext"
-	"github.com/perses/perses/internal/api/plugin"
-	"github.com/perses/perses/internal/test"
-	"github.com/perses/perses/pkg/model/api/v1/common"
-	"github.com/perses/perses/pkg/model/api/v1/datasource/http"
+	"github.com/peteryurkovich/perses/internal/api/plugin"
+	"github.com/peteryurkovich/perses/internal/test"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/datasource/http"
 	"github.com/stretchr/testify/assert"
 )
 

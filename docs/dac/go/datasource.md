@@ -3,7 +3,7 @@
 ## Constructor
 
 ```golang
-import "github.com/perses/perses/go-sdk/datasource"
+import "github.com/peteryurkovich/perses/go-sdk/datasource"
 
 var options []datasource.Option
 datasource.New("My Super Datasource", options...)
@@ -20,7 +20,7 @@ Need to provide the name of the datasource and a list of options.
 ### Name
 
 ```golang
-import "github.com/perses/perses/go-sdk/datasource" 
+import "github.com/peteryurkovich/perses/go-sdk/datasource" 
 
 datasource.Name("My Super Datasource")
 ```
@@ -30,7 +30,7 @@ Define the datasource metadata name + display name.
 ### ProjectName
 
 ```golang
-import "github.com/perses/perses/go-sdk/datasource" 
+import "github.com/peteryurkovich/perses/go-sdk/datasource" 
 
 datasource.ProjectName("MySuperProject")
 ```
@@ -40,7 +40,7 @@ Define the datasource project name in metadata.
 ### Default
 
 ```golang
-import "github.com/perses/perses/go-sdk/datasource" 
+import "github.com/peteryurkovich/perses/go-sdk/datasource" 
 
 datasource.Default(true)
 ```
@@ -57,7 +57,7 @@ See the related documentation for each datasource plugin.
 package main
 
 import (
-	"github.com/perses/perses/go-sdk/dashboard"
+	"github.com/peteryurkovich/perses/go-sdk/dashboard"
 	
 	promDs "github.com/perses/plugins/prometheus/sdk/go/datasource"
 )

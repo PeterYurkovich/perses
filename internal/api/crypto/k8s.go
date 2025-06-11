@@ -19,7 +19,7 @@ import (
 	"time"
 
 	"github.com/labstack/echo/v4"
-	"github.com/perses/perses/pkg/model/api/config"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
 	"k8s.io/apiserver/pkg/apis/apiserver"
 	"k8s.io/apiserver/pkg/authentication/authenticator"
 	"k8s.io/apiserver/pkg/authentication/authenticatorfactory"

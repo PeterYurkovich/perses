@@ -8,7 +8,7 @@ The Variable Group builder takes care of generating a pattern that we often see 
 package myDaC
 
 import (
-	varGroupBuilder "github.com/perses/perses/cue/dac-utils/variable/group"
+	varGroupBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/group"
 )
 
 varGroupBuilder & {} // input parameters expected
@@ -37,8 +37,8 @@ You can also pass to it variables for which the notion of dependencies don't/can
 package myDaC
 
 import (
-	varGroupBuilder "github.com/perses/perses/cue/dac-utils/variable/group"
-	textVarBuilder "github.com/perses/perses/cue/dac-utils/variable/text"
+	varGroupBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/group"
+	textVarBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/text"
 	promQLVarBuilder "github.com/perses/plugins/prometheus/sdk/cue/variable/promql"
 	labelValuesVarBuilder "github.com/perses/plugins/prometheus/sdk/cue/variable/labelvalues"
 )

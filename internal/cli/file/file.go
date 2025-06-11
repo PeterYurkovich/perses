@@ -22,8 +22,8 @@ import (
 	"os"
 	"path/filepath"
 
-	modelAPI "github.com/perses/perses/pkg/model/api"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 	"github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v3"
 )

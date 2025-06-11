@@ -16,8 +16,8 @@
 package v1
 
 import (
-	"github.com/perses/perses/pkg/client/perseshttp"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/client/perseshttp"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 const dashboardResource = "dashboards"

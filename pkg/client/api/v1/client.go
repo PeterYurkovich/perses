@@ -16,7 +16,7 @@ package v1
 import (
 	"net/url"
 
-	"github.com/perses/perses/pkg/client/perseshttp"
+	"github.com/peteryurkovich/perses/pkg/client/perseshttp"
 )
 
 type ClientInterface interface {

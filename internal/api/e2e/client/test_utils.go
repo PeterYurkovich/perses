@@ -19,12 +19,12 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/perses/perses/internal/api/dependency"
-	e2eframework "github.com/perses/perses/internal/api/e2e/framework"
-	"github.com/perses/perses/pkg/client/api/v1"
-	"github.com/perses/perses/pkg/client/config"
-	"github.com/perses/perses/pkg/model/api"
-	"github.com/perses/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/internal/api/dependency"
+	e2eframework "github.com/peteryurkovich/perses/internal/api/e2e/framework"
+	v1 "github.com/peteryurkovich/perses/pkg/client/api/v1"
+	"github.com/peteryurkovich/perses/pkg/client/config"
+	"github.com/peteryurkovich/perses/pkg/model/api"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
 )
 
 func withClient(t *testing.T, testFunc func(v1.ClientInterface, dependency.PersistenceManager) []api.Entity) {

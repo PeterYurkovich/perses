@@ -20,8 +20,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/perses/perses/pkg/model/api/v1/common"
-	"github.com/perses/perses/pkg/model/api/v1/plugin"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/plugin"
 )
 
 const (

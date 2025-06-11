@@ -13,7 +13,7 @@
 
 package datasource
 
-import "github.com/perses/perses/pkg/model/api/v1/common"
+import "github.com/peteryurkovich/perses/pkg/model/api/v1/common"
 
 func Name(name string) Option {
 	return func(datasource *Builder) error {

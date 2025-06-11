@@ -17,13 +17,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/perses/perses/go-sdk/datasource"
-	panelgroup "github.com/perses/perses/go-sdk/panel-group"
-	"github.com/perses/perses/go-sdk/variable"
-	variablegroup "github.com/perses/perses/go-sdk/variable-group"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
-	"github.com/perses/perses/pkg/model/api/v1/common"
-	"github.com/perses/perses/pkg/model/api/v1/dashboard"
+	"github.com/peteryurkovich/perses/go-sdk/datasource"
+	panelgroup "github.com/peteryurkovich/perses/go-sdk/panel-group"
+	"github.com/peteryurkovich/perses/go-sdk/variable"
+	variablegroup "github.com/peteryurkovich/perses/go-sdk/variable-group"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/dashboard"
 )
 
 func Name(name string) Option {

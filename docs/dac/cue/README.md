@@ -35,9 +35,9 @@ Example:
 package myDaC
 
 import (
-	dashboardBuilder "github.com/perses/perses/cue/dac-utils/dashboard"
-	panelGroupsBuilder "github.com/perses/perses/cue/dac-utils/panelgroups"
-	varGroupBuilder "github.com/perses/perses/cue/dac-utils/variable/group"
+	dashboardBuilder "github.com/peteryurkovich/perses/cue/dac-utils/dashboard"
+	panelGroupsBuilder "github.com/peteryurkovich/perses/cue/dac-utils/panelgroups"
+	varGroupBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/group"
 	panelBuilder "github.com/perses/plugins/prometheus/sdk/cue/panel"
 	promQLVarBuilder "github.com/perses/plugins/prometheus/sdk/cue/variable/promql"
 	promFilterBuilder "github.com/perses/plugins/prometheus/sdk/cue/filter"
@@ -112,9 +112,9 @@ package myDaC
 import (
 	"list"
 
-	dashboardBuilder "github.com/perses/perses/cue/dac-utils/dashboard"
-	panelGroupsBuilder "github.com/perses/perses/cue/dac-utils/panelgroups"
-	varGroupBuilder "github.com/perses/perses/cue/dac-utils/variable/group"
+	dashboardBuilder "github.com/peteryurkovich/perses/cue/dac-utils/dashboard"
+	panelGroupsBuilder "github.com/peteryurkovich/perses/cue/dac-utils/panelgroups"
+	varGroupBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/group"
 	panelBuilder "github.com/perses/plugins/prometheus/sdk/cue/panel"
 	promQLVarBuilder "github.com/perses/plugins/prometheus/sdk/cue/variable/promql"
 	promFilterBuilder "github.com/perses/plugins/prometheus/sdk/cue/filter"

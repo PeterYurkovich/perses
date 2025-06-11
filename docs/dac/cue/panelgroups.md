@@ -8,7 +8,7 @@ The Panel Groups builder helps creating panel groups easily.
 package myDaC
 
 import (
-    panelGroupsBuilder "github.com/perses/perses/cue/dac-utils/panelgroups"
+    panelGroupsBuilder "github.com/peteryurkovich/perses/cue/dac-utils/panelgroups"
 )
 
 panelGroupsBuilder & {} // input parameter expected
@@ -35,7 +35,7 @@ panelGroupsBuilder & {} // input parameter expected
 package myDaC
 
 import (
-    panelGroupsBuilder "github.com/perses/perses/cue/dac-utils/panelgroups"
+    panelGroupsBuilder "github.com/peteryurkovich/perses/cue/dac-utils/panelgroups"
 )
 
 #memoryPanel: {} // v1.#Panel object

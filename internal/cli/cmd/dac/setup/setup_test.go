@@ -17,7 +17,7 @@ import (
 	"os"
 	"testing"
 
-	cmdTest "github.com/perses/perses/internal/cli/test"
+	cmdTest "github.com/peteryurkovich/perses/internal/cli/test"
 )
 
 func TestDacSetupCMD(t *testing.T) {

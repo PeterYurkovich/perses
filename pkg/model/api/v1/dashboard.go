@@ -18,9 +18,9 @@ import (
 	"fmt"
 	"reflect"
 
-	modelAPI "github.com/perses/perses/pkg/model/api"
-	"github.com/perses/perses/pkg/model/api/v1/common"
-	"github.com/perses/perses/pkg/model/api/v1/dashboard"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/dashboard"
 )
 
 type Link struct {

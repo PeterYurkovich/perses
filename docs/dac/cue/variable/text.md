@@ -8,7 +8,7 @@ The Text Variable builder helps creating text variables in the format expected b
 package myDaC
 
 import (
-	textVarBuilder "github.com/perses/perses/cue/dac-utils/variable/text"
+	textVarBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/text"
 )
 
 textVarBuilder & {} // input parameters expected
@@ -35,7 +35,7 @@ textVarBuilder & {} // input parameters expected
 package myDaC
 
 import (
-	textVarBuilder "github.com/perses/perses/cue/dac-utils/variable/text"
+	textVarBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/text"
 )
 
 {textVarBuilder & {

@@ -6,7 +6,7 @@ data model). This documentation will guide you through the process of doing such
 
 ## ⚠️ Disclaimers
 
-- As the title indicates, Grafana is the only supported source for migration currently. If you use another tool and would like to migrate to Perses, see the [contribution guide](https://github.com/perses/perses/blob/main/CONTRIBUTING.md) for how to raise your request.
+- As the title indicates, Grafana is the only supported source for migration currently. If you use another tool and would like to migrate to Perses, see the [contribution guide](https://github.com/peteryurkovich/perses/blob/main/CONTRIBUTING.md) for how to raise your request.
 
 - Perses can't migrate Grafana resources like alerts, users, etc. Only the migration of dashboards is supported.
 

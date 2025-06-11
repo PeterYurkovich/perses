@@ -23,8 +23,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/perses/perses/pkg/model/api/config"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 // based on https://www.golinuxcloud.com/golang-encrypt-decrypt/

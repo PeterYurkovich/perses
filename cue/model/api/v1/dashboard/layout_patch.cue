@@ -21,7 +21,7 @@
 
 package dashboard
 
-import "github.com/perses/perses/cue/model/api/v1/common"
+import "github.com/peteryurkovich/perses/cue/model/api/v1/common"
 
 #GridItem: {
 	x:       int             @go(X)

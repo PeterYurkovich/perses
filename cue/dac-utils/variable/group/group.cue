@@ -15,7 +15,7 @@ package group
 
 import (
 	"strings"
-	varBuilder "github.com/perses/perses/cue/dac-utils/variable"
+	varBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable"
 )
 
 // The Variable Group builder takes care of generating a pattern that we often see in dashboards:

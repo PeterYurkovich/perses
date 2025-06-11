@@ -17,12 +17,12 @@ import (
 	"fmt"
 
 	"github.com/labstack/echo/v4"
-	databaseModel "github.com/perses/perses/internal/api/database/model"
-	apiinterface "github.com/perses/perses/internal/api/interface"
-	"github.com/perses/perses/internal/api/rbac"
-	"github.com/perses/perses/internal/api/utils"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
-	"github.com/perses/perses/pkg/model/api/v1/role"
+	databaseModel "github.com/peteryurkovich/perses/internal/api/database/model"
+	apiinterface "github.com/peteryurkovich/perses/internal/api/interface"
+	"github.com/peteryurkovich/perses/internal/api/rbac"
+	"github.com/peteryurkovich/perses/internal/api/utils"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/role"
 	"github.com/sirupsen/logrus"
 )
 

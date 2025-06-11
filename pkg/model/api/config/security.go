@@ -21,7 +21,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/perses/perses/pkg/model/api/v1/secret"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/secret"
 	"github.com/sirupsen/logrus"
 )
 

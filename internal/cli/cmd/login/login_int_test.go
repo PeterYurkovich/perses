@@ -21,10 +21,10 @@ import (
 	"testing"
 
 	"github.com/gavv/httpexpect/v2"
-	"github.com/perses/perses/internal/api/dependency"
-	e2eframework "github.com/perses/perses/internal/api/e2e/framework"
-	cmdTest "github.com/perses/perses/internal/cli/test"
-	modelAPI "github.com/perses/perses/pkg/model/api"
+	"github.com/peteryurkovich/perses/internal/api/dependency"
+	e2eframework "github.com/peteryurkovich/perses/internal/api/e2e/framework"
+	cmdTest "github.com/peteryurkovich/perses/internal/cli/test"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
 )
 
 func TestLoginOAuth(t *testing.T) {

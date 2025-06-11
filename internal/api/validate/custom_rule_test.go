@@ -17,9 +17,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	testUtils "github.com/perses/perses/internal/test"
-	"github.com/perses/perses/pkg/model/api/config"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	testUtils "github.com/peteryurkovich/perses/internal/test"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 	"github.com/stretchr/testify/assert"
 )
 

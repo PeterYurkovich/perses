@@ -18,8 +18,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/perses/perses/pkg/client/config"
-	"github.com/perses/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/client/config"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
 )
 
 const defaultRefreshInterval = common.Duration(time.Minute * 5)

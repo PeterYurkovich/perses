@@ -18,8 +18,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/perses/perses/pkg/model/api/v1/common"
-	"github.com/perses/perses/pkg/model/api/v1/secret"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/secret"
 	"github.com/prometheus/common/config"
 	"github.com/sirupsen/logrus"
 )

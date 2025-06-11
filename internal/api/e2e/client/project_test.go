@@ -18,10 +18,10 @@ package client
 import (
 	"testing"
 
-	"github.com/perses/perses/internal/api/dependency"
-	e2eframework "github.com/perses/perses/internal/api/e2e/framework"
-	"github.com/perses/perses/pkg/client/api/v1"
-	modelAPI "github.com/perses/perses/pkg/model/api"
+	"github.com/peteryurkovich/perses/internal/api/dependency"
+	e2eframework "github.com/peteryurkovich/perses/internal/api/e2e/framework"
+	v1 "github.com/peteryurkovich/perses/pkg/client/api/v1"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
 	"github.com/stretchr/testify/assert"
 )
 

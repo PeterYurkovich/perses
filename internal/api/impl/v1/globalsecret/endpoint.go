@@ -19,13 +19,13 @@ import (
 	"fmt"
 
 	"github.com/labstack/echo/v4"
-	"github.com/perses/perses/internal/api/crypto"
-	"github.com/perses/perses/internal/api/interface/v1/globalsecret"
-	"github.com/perses/perses/internal/api/rbac"
-	"github.com/perses/perses/internal/api/route"
-	"github.com/perses/perses/internal/api/toolbox"
-	"github.com/perses/perses/internal/api/utils"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/internal/api/crypto"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/globalsecret"
+	"github.com/peteryurkovich/perses/internal/api/rbac"
+	"github.com/peteryurkovich/perses/internal/api/route"
+	"github.com/peteryurkovich/perses/internal/api/toolbox"
+	"github.com/peteryurkovich/perses/internal/api/utils"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 type endpoint struct {

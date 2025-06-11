@@ -19,7 +19,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	databaseModel "github.com/perses/perses/internal/api/database/model"
+	databaseModel "github.com/peteryurkovich/perses/internal/api/database/model"
 	"github.com/sirupsen/logrus"
 )
 

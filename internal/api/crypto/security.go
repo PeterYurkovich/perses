@@ -15,7 +15,7 @@ package crypto
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/perses/perses/pkg/model/api/config"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
 )
 
 type Security interface {

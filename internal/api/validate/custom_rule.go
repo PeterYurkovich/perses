@@ -17,8 +17,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/perses/perses/pkg/model/api/config"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 func convertDashboardToJSONRaw(dash *modelV1.Dashboard) (map[string]interface{}, error) {

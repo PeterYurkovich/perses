@@ -17,10 +17,10 @@ import (
 	"os"
 	"testing"
 
-	databaseModel "github.com/perses/perses/internal/api/database/model"
-	"github.com/perses/perses/internal/api/interface/v1/project"
-	"github.com/perses/perses/pkg/model/api/config"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	databaseModel "github.com/peteryurkovich/perses/internal/api/database/model"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/project"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 	"github.com/stretchr/testify/assert"
 )
 

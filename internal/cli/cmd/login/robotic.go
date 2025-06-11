@@ -17,8 +17,8 @@ import (
 	"io"
 
 	"github.com/charmbracelet/huh"
-	"github.com/perses/perses/internal/cli/output"
-	"github.com/perses/perses/pkg/client/api"
+	"github.com/peteryurkovich/perses/internal/cli/output"
+	"github.com/peteryurkovich/perses/pkg/client/api"
 	"golang.org/x/oauth2"
 )
 

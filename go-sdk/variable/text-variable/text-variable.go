@@ -14,9 +14,9 @@
 package textvariable
 
 import (
-	"github.com/perses/perses/go-sdk/variable"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
-	"github.com/perses/perses/pkg/model/api/v1/dashboard"
+	"github.com/peteryurkovich/perses/go-sdk/variable"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/dashboard"
 )
 
 type Option func(textVariableSpec *Builder) error

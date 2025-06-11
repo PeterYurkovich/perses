@@ -16,7 +16,7 @@ package auth
 import (
 	"testing"
 
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 	"github.com/stretchr/testify/assert"
 )
 

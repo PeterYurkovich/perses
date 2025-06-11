@@ -9,7 +9,7 @@ Ignored variables are filtered, but they don't filter the next variables added t
 ## Constructor
 
 ```golang
-import "github.com/perses/perses/go-sdk/variable-group"
+import "github.com/peteryurkovich/perses/go-sdk/variable-group"
 
 var options []variablegroup.Option
 variablegroup.New(options...)
@@ -26,8 +26,8 @@ Need a list of options.
 ### AddVariable
 
 ```golang
-import "github.com/perses/perses/go-sdk/variable-group"
-import "github.com/perses/perses/go-sdk/variable"
+import "github.com/peteryurkovich/perses/go-sdk/variable-group"
+import "github.com/peteryurkovich/perses/go-sdk/variable"
 
 var variableOptions []variable.Option
 variablegroup.AddVariable("MySuperVariableName", variableOptions...)
@@ -39,8 +39,8 @@ More info at [Variable](./variable.md).
 ### AddIgnoredVariable
 
 ```golang
-import "github.com/perses/perses/go-sdk/variable-group"
-import "github.com/perses/perses/go-sdk/variable"
+import "github.com/peteryurkovich/perses/go-sdk/variable-group"
+import "github.com/peteryurkovich/perses/go-sdk/variable"
 
 var variableOptions []variable.Option
 variablegroup.AddIgnoredVariable("MySuperVariableName", variableOptions...)
@@ -55,10 +55,10 @@ However, this variable will not filter next variables added. More info at [Varia
 package main
 
 import (
-	"github.com/perses/perses/go-sdk/dashboard"
-	variablegroup "github.com/perses/perses/go-sdk/variable-group"
-	listvariable "github.com/perses/perses/go-sdk/variable/list-variable"
-	textvariable "github.com/perses/perses/go-sdk/variable/text-variable"
+	"github.com/peteryurkovich/perses/go-sdk/dashboard"
+	variablegroup "github.com/peteryurkovich/perses/go-sdk/variable-group"
+	listvariable "github.com/peteryurkovich/perses/go-sdk/variable/list-variable"
+	textvariable "github.com/peteryurkovich/perses/go-sdk/variable/text-variable"
 	labelnames "github.com/perses/plugins/prometheus/sdk/go/variable/label-names"
 	labelvalues "github.com/perses/plugins/prometheus/sdk/go/variable/label-values"
 	"github.com/perses/plugins/prometheus/sdk/go/variable/promql"

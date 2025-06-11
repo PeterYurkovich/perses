@@ -18,13 +18,13 @@ import (
 	"fmt"
 
 	"github.com/perses/common/async"
-	databaseModel "github.com/perses/perses/internal/api/database/model"
-	"github.com/perses/perses/internal/api/dependency"
-	apiInterface "github.com/perses/perses/internal/api/interface"
-	"github.com/perses/perses/internal/cli/file"
-	"github.com/perses/perses/internal/cli/resource"
-	modelAPI "github.com/perses/perses/pkg/model/api"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	databaseModel "github.com/peteryurkovich/perses/internal/api/database/model"
+	"github.com/peteryurkovich/perses/internal/api/dependency"
+	apiInterface "github.com/peteryurkovich/perses/internal/api/interface"
+	"github.com/peteryurkovich/perses/internal/cli/file"
+	"github.com/peteryurkovich/perses/internal/cli/resource"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 	"github.com/sirupsen/logrus"
 )
 

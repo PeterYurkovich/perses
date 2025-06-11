@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"reflect"
 
-	modelAPI "github.com/perses/perses/pkg/model/api"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
 )
 
 type RoleBindingInterface interface {

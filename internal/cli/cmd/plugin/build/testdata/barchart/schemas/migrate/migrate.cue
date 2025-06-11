@@ -14,7 +14,7 @@
 package migrate
 
 import (
-	commonMigrate "github.com/perses/perses/cue/common/migrate"
+	commonMigrate "github.com/peteryurkovich/perses/cue/common/migrate"
 )
 
 #grafanaType: "bargauge"

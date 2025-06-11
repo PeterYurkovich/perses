@@ -31,7 +31,7 @@ import (
 var pluginListData []byte
 
 const (
-	githubURL           = "https://github.com/perses/perses-plugins/releases/download"
+	githubURL           = "https://github.com/peteryurkovich/perses-plugins/releases/download"
 	pluginArchiveFolder = "plugins-archive"
 )
 

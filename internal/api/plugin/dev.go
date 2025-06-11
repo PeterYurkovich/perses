@@ -16,9 +16,9 @@ package plugin
 import (
 	"fmt"
 
-	apiinterface "github.com/perses/perses/internal/api/interface"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
-	"github.com/perses/perses/pkg/model/api/v1/plugin"
+	apiinterface "github.com/peteryurkovich/perses/internal/api/interface"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/plugin"
 	"github.com/sirupsen/logrus"
 )
 

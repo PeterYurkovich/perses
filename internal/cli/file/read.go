@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/perses/perses/internal/cli/read"
+	"github.com/peteryurkovich/perses/internal/cli/read"
 )
 
 func readAndDetect(file string) (data []byte, isJSON bool, err error) {

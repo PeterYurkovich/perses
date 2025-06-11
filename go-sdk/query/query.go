@@ -13,7 +13,7 @@
 
 package query
 
-import v1 "github.com/perses/perses/pkg/model/api/v1"
+import v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 
 type Option func(panel *Builder) error
 

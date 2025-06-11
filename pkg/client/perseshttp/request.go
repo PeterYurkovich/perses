@@ -23,7 +23,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/perses/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
 )
 
 const (

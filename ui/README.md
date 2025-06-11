@@ -90,7 +90,7 @@ You can also run a script across all packages in the workspace using NPM's
 `--workspaces` flag.
 
 Note: If you are trying to run the app (`npm run start -w app`), you may need to
-first [setup a local backend server](https://github.com/perses/perses/blob/main/CONTRIBUTING.md).
+first [setup a local backend server](https://github.com/peteryurkovich/perses/blob/main/CONTRIBUTING.md).
 
 ## Troubleshooting
 

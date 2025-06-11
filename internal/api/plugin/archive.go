@@ -21,7 +21,7 @@ import (
 	"path/filepath"
 
 	"github.com/mholt/archives"
-	"github.com/perses/perses/internal/api/archive"
+	"github.com/peteryurkovich/perses/internal/api/archive"
 	"github.com/sirupsen/logrus"
 )
 

@@ -17,9 +17,9 @@ import (
 	"encoding/json"
 
 	"github.com/labstack/echo/v4"
-	"github.com/perses/perses/internal/api/crypto"
-	databaseModel "github.com/perses/perses/internal/api/database/model"
-	"github.com/perses/perses/pkg/model/api"
+	"github.com/peteryurkovich/perses/internal/api/crypto"
+	databaseModel "github.com/peteryurkovich/perses/internal/api/database/model"
+	"github.com/peteryurkovich/perses/pkg/model/api"
 )
 
 var (

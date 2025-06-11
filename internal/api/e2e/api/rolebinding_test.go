@@ -22,10 +22,10 @@ import (
 	"testing"
 
 	"github.com/gavv/httpexpect/v2"
-	"github.com/perses/perses/internal/api/dependency"
-	e2eframework "github.com/perses/perses/internal/api/e2e/framework"
-	"github.com/perses/perses/internal/api/utils"
-	"github.com/perses/perses/pkg/model/api"
+	"github.com/peteryurkovich/perses/internal/api/dependency"
+	e2eframework "github.com/peteryurkovich/perses/internal/api/e2e/framework"
+	"github.com/peteryurkovich/perses/internal/api/utils"
+	"github.com/peteryurkovich/perses/pkg/model/api"
 )
 
 func TestMainScenarioRoleBinding(t *testing.T) {

@@ -26,7 +26,7 @@ import (
 	"cuelang.org/go/cue/cuecontext"
 	"cuelang.org/go/cue/format"
 	"cuelang.org/go/cue/load"
-	"github.com/perses/perses/internal/cli/file"
+	"github.com/peteryurkovich/perses/internal/cli/file"
 	"github.com/sirupsen/logrus"
 )
 
@@ -51,7 +51,7 @@ func cacheDir() (string, error) {
 }
 
 type cueDep struct {
-	// moduleName is the name of the module (e.g github.com/perses/perses/cue@v0)
+	// moduleName is the name of the module (e.g github.com/peteryurkovich/perses/cue@v0)
 	moduleName               string
 	modulePathInCueCaching   string
 	modulePathWithoutVersion string

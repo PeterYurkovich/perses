@@ -14,7 +14,7 @@
 package query
 
 import (
-	"github.com/perses/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
 )
 
 func Plugin(plugin common.Plugin) Option {

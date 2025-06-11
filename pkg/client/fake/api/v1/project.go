@@ -16,8 +16,8 @@ package fakev1
 import (
 	"strings"
 
-	v1 "github.com/perses/perses/pkg/client/api/v1"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	v1 "github.com/peteryurkovich/perses/pkg/client/api/v1"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 func ProjectList(prefix string) []*modelV1.Project {

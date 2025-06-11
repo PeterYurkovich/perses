@@ -53,13 +53,13 @@ import (
     "fmt"
 
 	"github.com/labstack/echo/v4"
-	"github.com/perses/perses/internal/api/crypto"
-	"github.com/perses/perses/internal/api/interface/v1/{{ $package }}"
-	"github.com/perses/perses/internal/api/toolbox"
-	"github.com/perses/perses/internal/api/rbac"
-	"github.com/perses/perses/internal/api/route"
-	"github.com/perses/perses/internal/api/utils"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/internal/api/crypto"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/{{ $package }}"
+	"github.com/peteryurkovich/perses/internal/api/toolbox"
+	"github.com/peteryurkovich/perses/internal/api/rbac"
+	"github.com/peteryurkovich/perses/internal/api/route"
+	"github.com/peteryurkovich/perses/internal/api/utils"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 type Endpoint struct {
@@ -146,9 +146,9 @@ func (e *Endpoint) List(ctx echo.Context) error {
 package {{ $package }}
 
 import (
-	apiInterface "github.com/perses/perses/internal/api/interface"
-	databaseModel "github.com/perses/perses/internal/api/database/model"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	apiInterface "github.com/peteryurkovich/perses/internal/api/interface"
+	databaseModel "github.com/peteryurkovich/perses/internal/api/database/model"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 type Query struct {
@@ -201,9 +201,9 @@ type Service interface {
 package {{ $package }}
 
 import (
-	"github.com/perses/perses/internal/api/interface/v1/{{ $package }}"
-	databaseModel "github.com/perses/perses/internal/api/database/model"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/{{ $package }}"
+	databaseModel "github.com/peteryurkovich/perses/internal/api/database/model"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 type dao struct {
@@ -280,8 +280,8 @@ func (d *dao) List(q databaseModel.Query) ([]*v1.{{ $kind }}, error) {
 package v1
 
 import (
-	"github.com/perses/perses/pkg/client/perseshttp"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/client/perseshttp"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 const {{ unTitle $kind }}Resource = "{{ $plural }}"

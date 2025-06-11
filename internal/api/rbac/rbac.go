@@ -15,14 +15,14 @@ package rbac
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/perses/perses/internal/api/crypto"
-	"github.com/perses/perses/internal/api/interface/v1/globalrole"
-	"github.com/perses/perses/internal/api/interface/v1/globalrolebinding"
-	"github.com/perses/perses/internal/api/interface/v1/role"
-	"github.com/perses/perses/internal/api/interface/v1/rolebinding"
-	"github.com/perses/perses/internal/api/interface/v1/user"
-	"github.com/perses/perses/pkg/model/api/config"
-	v1Role "github.com/perses/perses/pkg/model/api/v1/role"
+	"github.com/peteryurkovich/perses/internal/api/crypto"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/globalrole"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/globalrolebinding"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/role"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/rolebinding"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/user"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
+	v1Role "github.com/peteryurkovich/perses/pkg/model/api/v1/role"
 )
 
 type RBAC interface {

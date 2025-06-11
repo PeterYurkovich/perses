@@ -17,9 +17,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/perses/perses/internal/api/plugin"
-	"github.com/perses/perses/internal/test"
-	"github.com/perses/perses/pkg/model/api/config"
+	"github.com/peteryurkovich/perses/internal/api/plugin"
+	"github.com/peteryurkovich/perses/internal/test"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
 	"github.com/stretchr/testify/assert"
 	corev1 "k8s.io/api/core/v1"
 )

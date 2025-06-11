@@ -3,7 +3,7 @@
 ## Constructor
 
 ```golang
-import "github.com/perses/perses/go-sdk/panel"
+import "github.com/peteryurkovich/perses/go-sdk/panel"
 
 var options []panel.Option
 panel.New("My Super Panel", options...)
@@ -20,7 +20,7 @@ Need to provide the name of the panel and a list of options.
 ### Title
 
 ```golang
-import "github.com/perses/perses/go-sdk/panel"
+import "github.com/peteryurkovich/perses/go-sdk/panel"
 
 panel.Name("My Super Panel")
 ```
@@ -30,7 +30,7 @@ Define the panel title.
 ### Description
 
 ```golang
-import "github.com/perses/perses/go-sdk/panel"
+import "github.com/peteryurkovich/perses/go-sdk/panel"
 
 panel.Description("My Super Panel")
 ```
@@ -40,7 +40,7 @@ Define the panel description.
 ### AddQuery
 
 ```golang
-import "github.com/perses/perses/go-sdk/panel"
+import "github.com/peteryurkovich/perses/go-sdk/panel"
 
 var queryOptions []query.Option
 panel.AddQuery(queryOptions...)
@@ -58,9 +58,9 @@ See the related documentation for each panel plugin.
 package main
 
 import (
-	"github.com/perses/perses/go-sdk/dashboard"
-	"github.com/perses/perses/go-sdk/panel"
-	panelgroup "github.com/perses/perses/go-sdk/panel-group"
+	"github.com/peteryurkovich/perses/go-sdk/dashboard"
+	"github.com/peteryurkovich/perses/go-sdk/panel"
+	panelgroup "github.com/peteryurkovich/perses/go-sdk/panel-group"
 	"github.com/perses/plugins/prometheus/sdk/go/query"
 	timeseries "github.com/perses/plugins/timeserieschart/sdk/go"
 )

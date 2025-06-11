@@ -22,7 +22,7 @@ import (
 	echojwt "github.com/labstack/echo-jwt/v4"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	crypto "github.com/perses/perses/internal/api/crypto"
+	crypto "github.com/peteryurkovich/perses/internal/api/crypto"
 	"github.com/sirupsen/logrus"
 )
 

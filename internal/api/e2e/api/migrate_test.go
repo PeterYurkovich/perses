@@ -23,11 +23,11 @@ import (
 	"testing"
 
 	"github.com/gavv/httpexpect/v2"
-	"github.com/perses/perses/internal/api/dependency"
-	e2eframework "github.com/perses/perses/internal/api/e2e/framework"
-	testUtils "github.com/perses/perses/internal/test"
-	modelAPI "github.com/perses/perses/pkg/model/api"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/internal/api/dependency"
+	e2eframework "github.com/peteryurkovich/perses/internal/api/e2e/framework"
+	testUtils "github.com/peteryurkovich/perses/internal/test"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 func TestMigrateEndpoint(t *testing.T) {

@@ -45,7 +45,7 @@ It's first strongly recommended to ramp up on CUE if you are not familiar with t
 
 You should then have a look at the [CUE SDK documentation](../dac/cue/README.md) to better understand how to use it.
 
-You can also check an example of DaC usage [here](https://github.com/perses/perses/blob/main/internal/test/dac/input.cue).
+You can also check an example of DaC usage [here](https://github.com/peteryurkovich/perses/blob/main/internal/test/dac/input.cue).
 
 For each [plugin](../concepts/plugins.md) you would like to use in your DaC, it is strongly recommended to import its module so that you benefit from its schema validation locally. Optionally the plugin could also provide additional helpers (kind-of SDK additional piece) to help using it. Check the list of available plugins & their corresponding module name at https://github.com/perses/plugins.
 
@@ -102,7 +102,7 @@ It's first strongly recommended to ramp up on Go if you are not familiar with th
 
 You should then have a look at the [Go SDK documentation](../dac/go/README.md) to better understand how to use the framework.
 
-You can also check an example of DaC usage [here](https://github.com/perses/perses/blob/main/internal/cli/cmd/dac/build/testdata/go/main.go).
+You can also check an example of DaC usage [here](https://github.com/peteryurkovich/perses/blob/main/internal/cli/cmd/dac/build/testdata/go/main.go).
 
 !!! warning
 	Do not log / print on the standard stdout! It would break the output of the `dac build` command.
@@ -123,9 +123,9 @@ package main
 import (
 	"flag"
 
-	"github.com/perses/perses/go-sdk/dashboard"
-	"github.com/perses/perses/go-sdk/panel"
-	listVar "github.com/perses/perses/go-sdk/variable/list-variable"
+	"github.com/peteryurkovich/perses/go-sdk/dashboard"
+	"github.com/peteryurkovich/perses/go-sdk/panel"
+	listVar "github.com/peteryurkovich/perses/go-sdk/variable/list-variable"
 	promDs "github.com/perses/plugins/prometheus/sdk/go/datasource"
 	"github.com/perses/plugins/prometheus/sdk/go/query"
 	labelValuesVar "github.com/perses/plugins/prometheus/sdk/go/variable/label-values"

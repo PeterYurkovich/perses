@@ -15,9 +15,9 @@ package middleware
 
 import (
 	"github.com/labstack/echo/v4"
-	crypto "github.com/perses/perses/internal/api/crypto"
-	"github.com/perses/perses/internal/api/rbac"
-	"github.com/perses/perses/pkg/model/api/config"
+	crypto "github.com/peteryurkovich/perses/internal/api/crypto"
+	"github.com/peteryurkovich/perses/internal/api/rbac"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
 )
 
 func GetAuthenticationMiddleware(conf config.Config, rbac rbac.RBAC, security crypto.Security) echo.MiddlewareFunc {

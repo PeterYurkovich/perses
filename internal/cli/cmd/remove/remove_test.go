@@ -16,9 +16,9 @@ package remove
 import (
 	"testing"
 
-	"github.com/perses/perses/internal/cli/resource"
-	cmdTest "github.com/perses/perses/internal/cli/test"
-	fakeapi "github.com/perses/perses/pkg/client/fake/api"
+	"github.com/peteryurkovich/perses/internal/cli/resource"
+	cmdTest "github.com/peteryurkovich/perses/internal/cli/test"
+	fakeapi "github.com/peteryurkovich/perses/pkg/client/fake/api"
 )
 
 func TestDeleteCMD(t *testing.T) {

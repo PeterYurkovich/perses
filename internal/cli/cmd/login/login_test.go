@@ -16,7 +16,7 @@ package login
 import (
 	"testing"
 
-	cmdTest "github.com/perses/perses/internal/cli/test"
+	cmdTest "github.com/peteryurkovich/perses/internal/cli/test"
 )
 
 func TestLoginCMD(t *testing.T) {

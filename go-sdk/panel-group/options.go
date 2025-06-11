@@ -16,7 +16,7 @@ package panelgroup
 import (
 	"fmt"
 
-	"github.com/perses/perses/go-sdk/panel"
+	"github.com/peteryurkovich/perses/go-sdk/panel"
 )
 
 func Title(title string) Option {

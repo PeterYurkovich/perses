@@ -25,11 +25,11 @@ import (
 
 	"text/template"
 
-	plugin "github.com/perses/perses/internal/api/plugin"
-	persesCMD "github.com/perses/perses/internal/cli/cmd"
-	"github.com/perses/perses/internal/cli/output"
-	common "github.com/perses/perses/pkg/model/api/v1/common"
-	apiv1 "github.com/perses/perses/pkg/model/api/v1/plugin"
+	plugin "github.com/peteryurkovich/perses/internal/api/plugin"
+	persesCMD "github.com/peteryurkovich/perses/internal/cli/cmd"
+	"github.com/peteryurkovich/perses/internal/cli/output"
+	common "github.com/peteryurkovich/perses/pkg/model/api/v1/common"
+	apiv1 "github.com/peteryurkovich/perses/pkg/model/api/v1/plugin"
 	"github.com/spf13/cobra"
 )
 

@@ -18,7 +18,7 @@ import (
 	"time"
 
 	"github.com/perses/common/async"
-	"github.com/perses/perses/internal/api/interface/v1/ephemeraldashboard"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/ephemeraldashboard"
 	"github.com/sirupsen/logrus"
 )
 

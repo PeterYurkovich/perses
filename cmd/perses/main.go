@@ -16,9 +16,9 @@ package main
 import (
 	"flag"
 
-	"github.com/perses/perses/internal/api/core"
-	"github.com/perses/perses/internal/api/impl/v1/view"
-	"github.com/perses/perses/pkg/model/api/config"
+	"github.com/peteryurkovich/perses/internal/api/core"
+	"github.com/peteryurkovich/perses/internal/api/impl/v1/view"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/collectors"
 	"github.com/sirupsen/logrus"
@@ -44,7 +44,7 @@ func registerMetrics(register prometheus.Registerer) {
 }
 
 func main() {
-	configFile := flag.String("config", "", "Path to the YAML configuration file for the API. Configuration settings can be overridden when using environment variables.")
+	configFile := flag.String("config", "/home/pyurkovi/projects/forks/perses/dev/config.yaml", "Path to the YAML configuration file for the API. Configuration settings can be overridden when using environment variables.")
 	pprof := flag.Bool("pprof", false, "Enable pprof")
 	flag.Parse()
 	// load the config from file or/and from environment

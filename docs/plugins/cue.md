@@ -89,7 +89,7 @@ A panel migration file looks like the following:
 package migrate
 
 import (
-	commonMigrate "github.com/perses/perses/cue/schemas/common/migrate"
+	commonMigrate "github.com/peteryurkovich/perses/cue/schemas/common/migrate"
 )
 
 #grafanaType: "bargauge"
@@ -117,7 +117,7 @@ spec: {
     - You can access the different fields via the `#panel.field.subfield` syntax. To find the list of available fields, refer to the Grafana data model for the relevant panel type (from Grafana repo, or by inspecting the JSON of the dashboard on the Grafana UI).
     - Declaring `#panel: _` like in the above example is optional, it's just there to enable standalone validation of the file (`_` means "any" in CUE).
 - The file consists of field assignments, using the content of `#panel`. The end result must match the model of the considered Perses panel plugin.
-    - Optionally, you can use the `github.com/perses/perses/cue/schemas/common/migrate` package that Perses provides in order to remap some of the attributes:
+    - Optionally, you can use the `github.com/peteryurkovich/perses/cue/schemas/common/migrate` package that Perses provides in order to remap some of the attributes:
         - `#mapping.unit`: mapping table for the `unit` attribute (key = grafana unit, value = perses equivalent).
         - `#mapping.calc`: mapping table for the `calculation` attribute (key = grafana unit, value = perses equivalent).
         - `#mapping.color`: mapping table for the "standard" colors used by Grafana (key = color name, value = hex code).

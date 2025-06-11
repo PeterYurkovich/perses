@@ -12,7 +12,7 @@ The List Variable builder helps creating list variables in the format expected b
 package myDaC
 
 import (
-	listVarBuilder "github.com/perses/perses/cue/dac-utils/variable/list"
+	listVarBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/list"
 )
 
 listVarBuilder & {} // input parameters expected
@@ -46,7 +46,7 @@ package myDaCLib
 
 import (
 	staticListVar "github.com/perses/plugins/staticlistvariable/schemas:model"
-	listVarBuilder "github.com/perses/perses/cue/dac-utils/variable/list"
+	listVarBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/list"
 )
 
 // include the definitions of listVarBuilder at the root

@@ -15,10 +15,10 @@ package test
 
 import (
 	// perses core
-	dashboardBuilder "github.com/perses/perses/cue/dac-utils/dashboard"
-	panelGroupsBuilder "github.com/perses/perses/cue/dac-utils/panelgroups"
-	varGroupBuilder "github.com/perses/perses/cue/dac-utils/variable/group"
-	textVarBuilder "github.com/perses/perses/cue/dac-utils/variable/text"
+	dashboardBuilder "github.com/peteryurkovich/perses/cue/dac-utils/dashboard"
+	panelGroupsBuilder "github.com/peteryurkovich/perses/cue/dac-utils/panelgroups"
+	varGroupBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/group"
+	textVarBuilder "github.com/peteryurkovich/perses/cue/dac-utils/variable/text"
 	// prometheus plugin
 	promQLVarBuilder "github.com/perses/plugins/prometheus/sdk/cue/variable/promql"
 	labelValuesVarBuilder "github.com/perses/plugins/prometheus/sdk/cue/variable/labelvalues"

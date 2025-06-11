@@ -10,7 +10,7 @@ body:
 
         Please do *NOT* ask support questions in Github issues.
 
-        If your issue is not a feature request or bug report use [Discussions](https://github.com/perses/perses/discussions).
+        If your issue is not a feature request or bug report use [Discussions](https://github.com/peteryurkovich/perses/discussions).
   - type: textarea
     attributes:
       label: What did you do?

@@ -20,7 +20,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/perses/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
 )
 
 type AllowedEndpoint struct {

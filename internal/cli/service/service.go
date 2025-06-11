@@ -17,10 +17,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/perses/perses/pkg/client/api"
-	"github.com/perses/perses/pkg/client/perseshttp"
-	modelAPI "github.com/perses/perses/pkg/model/api"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/client/api"
+	"github.com/peteryurkovich/perses/pkg/client/perseshttp"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 func convertToEntityIfNoError[T modelAPI.Entity](entities []T, err error) ([]modelAPI.Entity, error) {

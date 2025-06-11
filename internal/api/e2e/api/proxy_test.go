@@ -24,15 +24,15 @@ import (
 	"testing"
 
 	"github.com/gavv/httpexpect/v2"
-	"github.com/perses/perses/internal/api/dependency"
-	e2eframework "github.com/perses/perses/internal/api/e2e/framework"
-	"github.com/perses/perses/internal/api/utils"
-	testUtils "github.com/perses/perses/internal/test"
-	"github.com/perses/perses/pkg/model/api"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
-	"github.com/perses/perses/pkg/model/api/v1/common"
-	"github.com/perses/perses/pkg/model/api/v1/datasource"
-	datasourceHTTP "github.com/perses/perses/pkg/model/api/v1/datasource/http"
+	"github.com/peteryurkovich/perses/internal/api/dependency"
+	e2eframework "github.com/peteryurkovich/perses/internal/api/e2e/framework"
+	"github.com/peteryurkovich/perses/internal/api/utils"
+	testUtils "github.com/peteryurkovich/perses/internal/test"
+	"github.com/peteryurkovich/perses/pkg/model/api"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/datasource"
+	datasourceHTTP "github.com/peteryurkovich/perses/pkg/model/api/v1/datasource/http"
 )
 
 func newDatasourceSpec(t *testing.T) v1.DatasourceSpec {

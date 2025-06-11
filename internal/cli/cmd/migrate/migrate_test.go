@@ -17,9 +17,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	cmdTest "github.com/perses/perses/internal/cli/test"
-	"github.com/perses/perses/internal/test"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	cmdTest "github.com/peteryurkovich/perses/internal/cli/test"
+	"github.com/peteryurkovich/perses/internal/test"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 )
 
 func TestMigrateCMD(t *testing.T) {

@@ -14,8 +14,8 @@
 package v1
 
 import (
-	modelAPI "github.com/perses/perses/pkg/model/api"
-	"github.com/perses/perses/pkg/model/api/v1/secret"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/secret"
 )
 
 type PublicSecretSpec struct {

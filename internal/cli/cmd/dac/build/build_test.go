@@ -20,8 +20,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/perses/perses/internal/cli/config"
-	cmdTest "github.com/perses/perses/internal/cli/test"
+	"github.com/peteryurkovich/perses/internal/cli/config"
+	cmdTest "github.com/peteryurkovich/perses/internal/cli/test"
 )
 
 func TestDacBuildCMD(t *testing.T) {

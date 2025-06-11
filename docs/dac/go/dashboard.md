@@ -3,7 +3,7 @@
 ## Constructor
 
 ```golang
-import "github.com/perses/perses/go-sdk/dashboard"
+import "github.com/peteryurkovich/perses/go-sdk/dashboard"
 
 var options []dashboard.Option
 dashboard.New("my Super Dashboard", options...)
@@ -21,7 +21,7 @@ Need to provide the name of the dashboard and a list of options.
 ### Name
 
 ```golang
-import "github.com/perses/perses/go-sdk/dashboard" 
+import "github.com/peteryurkovich/perses/go-sdk/dashboard" 
 
 dashboard.Name("My Super Dashboard")
 ```
@@ -31,7 +31,7 @@ Define the dashboard metadata name and display name.
 ### ProjectName
 
 ```golang
-import "github.com/perses/perses/go-sdk/dashboard" 
+import "github.com/peteryurkovich/perses/go-sdk/dashboard" 
 
 dashboard.ProjectName("MySuperProject")
 ```
@@ -42,7 +42,7 @@ Define the dashboard project name in metadata.
 
 ```golang
 import "time"
-import "github.com/perses/perses/go-sdk/dashboard" 
+import "github.com/peteryurkovich/perses/go-sdk/dashboard" 
 
 dashboard.Duration(2*time.Hour)
 ```
@@ -53,7 +53,7 @@ Define the dashboard duration.
 
 ```golang
 import "time"
-import "github.com/perses/perses/go-sdk/dashboard" 
+import "github.com/peteryurkovich/perses/go-sdk/dashboard" 
 
 dashboard.RefreshInterval(15*time.minutes)
 ```
@@ -63,8 +63,8 @@ Define the dashboard refresh interval.
 ### AddPanelGroup
 
 ```golang
-import "github.com/perses/perses/go-sdk/dashboard"
-import "github.com/perses/perses/go-sdk/panel-group"
+import "github.com/peteryurkovich/perses/go-sdk/dashboard"
+import "github.com/peteryurkovich/perses/go-sdk/panel-group"
 
 var panelGroupOptions []panelgroup.Option
 dashboard.AddPanelGroup("My Super Panel Group", panelGroupOptions...)
@@ -75,8 +75,8 @@ Add a panel group to the dashboard. More info at [Panel Group](./panel-group.md)
 ### AddDatasource
 
 ```golang
-import "github.com/perses/perses/go-sdk/dashboard"
-import "github.com/perses/perses/go-sdk/datasource"
+import "github.com/peteryurkovich/perses/go-sdk/dashboard"
+import "github.com/peteryurkovich/perses/go-sdk/datasource"
 
 var datasourceOptions []datasource.Option
 dashboard.AddDatasource("MySuperDatasourceName", datasourceOptions...)
@@ -87,8 +87,8 @@ Add a local datasource to the dashboard. More info at [Datasource](./datasource.
 ### AddVariable
 
 ```golang
-import "github.com/perses/perses/go-sdk/dashboard"
-import "github.com/perses/perses/go-sdk/variable"
+import "github.com/peteryurkovich/perses/go-sdk/dashboard"
+import "github.com/peteryurkovich/perses/go-sdk/variable"
 
 var variableOptions []variable.Option
 dashboard.AddVariable("MySuperVariableName", variableOptions...)
@@ -99,8 +99,8 @@ Add a local variable to the dashboard. More info at [Variable](./variable.md).
 ### AddVariableGroup
 
 ```golang
-import "github.com/perses/perses/go-sdk/dashboard" 
-import "github.com/perses/perses/go-sdk/variable-group"
+import "github.com/peteryurkovich/perses/go-sdk/dashboard" 
+import "github.com/peteryurkovich/perses/go-sdk/variable-group"
 
 var variableGroupOptions []variablegroup.Option
 dashboard.AddVariableGroup(variableGroupOptions...)
@@ -116,9 +116,9 @@ package main
 import (
 	"time"
 
-	"github.com/perses/perses/go-sdk/dashboard"
-	panelgroup "github.com/perses/perses/go-sdk/panel-group"
-	listVar "github.com/perses/perses/go-sdk/variable/list-variable"
+	"github.com/peteryurkovich/perses/go-sdk/dashboard"
+	panelgroup "github.com/peteryurkovich/perses/go-sdk/panel-group"
+	listVar "github.com/peteryurkovich/perses/go-sdk/variable/list-variable"
 	"github.com/perses/plugins/markdown/sdk/go"
 	promDs "github.com/perses/plugins/prometheus/sdk/go/datasource"
 	labelValuesVar "github.com/perses/plugins/prometheus/sdk/go/variable/label-values"

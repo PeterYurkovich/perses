@@ -14,7 +14,7 @@
 package http
 
 import (
-	"github.com/perses/perses/pkg/model/api/v1/datasource/http"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/datasource/http"
 )
 
 type Option func(proxy *Builder) error

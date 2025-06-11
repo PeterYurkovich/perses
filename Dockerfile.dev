@@ -5,7 +5,7 @@ COPY Makefile Makefile
 RUN make build-ui
 
 FROM golang:1.24 AS go-builder
-WORKDIR /go/src/github.com/perses/perses
+WORKDIR /go/src/github.com/peteryurkovich/perses
 COPY . .
 COPY --from=node-builder /app/ui/app/dist ui/app/dist
 RUN mkdir /perses
@@ -19,8 +19,8 @@ LABEL maintainer="The Perses Authors <perses-team@googlegroups.com>"
 
 USER nobody
 
-COPY --from=go-builder --chown=nobody:nobody  /go/src/github.com/perses/perses/bin/perses        /bin/perses
-COPY --from=go-builder --chown=nobody:nobody  /go/src/github.com/perses/perses/bin/percli        /bin/percli
+COPY --from=go-builder --chown=nobody:nobody  /go/src/github.com/peteryurkovich/perses/bin/perses        /bin/perses
+COPY --from=go-builder --chown=nobody:nobody  /go/src/github.com/peteryurkovich/perses/bin/percli        /bin/percli
 COPY --chown=nobody:nobody                    LICENSE            /LICENSE
 COPY --chown=nobody:nobody                    plugins-archive/   /etc/perses/plugins-archive/
 COPY --chown=nobody:nobody                    docs/examples/config.docker.yaml     /etc/perses/config.yaml

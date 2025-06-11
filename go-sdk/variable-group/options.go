@@ -13,7 +13,7 @@
 
 package variablegroup
 
-import "github.com/perses/perses/go-sdk/variable"
+import "github.com/peteryurkovich/perses/go-sdk/variable"
 
 func AddVariable(name string, options ...variable.Option) Option {
 	return func(builder *Builder) error {

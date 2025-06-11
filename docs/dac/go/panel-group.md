@@ -3,7 +3,7 @@
 ## Constructor
 
 ```golang
-import "github.com/perses/perses/go-sdk/panel-group"
+import "github.com/peteryurkovich/perses/go-sdk/panel-group"
 
 var options []panelgroup.Option
 panelgroup.New("My Panel Group Title", options...)
@@ -23,7 +23,7 @@ Need to provide a title and a list of options.
 ### Title
 
 ```golang
-import "github.com/perses/perses/go-sdk/panel-group"
+import "github.com/peteryurkovich/perses/go-sdk/panel-group"
 
 panelgroup.Title("My Panel Group Title")
 ```
@@ -33,7 +33,7 @@ Define the panel group title.
 ### PanelWidth
 
 ```golang
-import "github.com/perses/perses/go-sdk/panel-group"
+import "github.com/peteryurkovich/perses/go-sdk/panel-group"
 
 panelgroup.PanelWidth(6)
 ```
@@ -43,7 +43,7 @@ Define the panel width. The value must be between 1 and 24.
 ### PanelsPerLine
 
 ```golang
-import "github.com/perses/perses/go-sdk/panel-group"
+import "github.com/peteryurkovich/perses/go-sdk/panel-group"
 
 panelgroup.PanelsPerLine(4)
 ```
@@ -53,7 +53,7 @@ Helper for defining panel width instead of PanelWidth. The value must be between
 ### PanelHeight
 
 ```golang
-import "github.com/perses/perses/go-sdk/panel-group"
+import "github.com/peteryurkovich/perses/go-sdk/panel-group"
 
 panelgroup.PanelHeight(8) 
 ```
@@ -63,7 +63,7 @@ Define the panel height. The value must be between 1 and 24.
 ### Collapsed
 
 ```golang
-import "github.com/perses/perses/go-sdk/panel-group"
+import "github.com/peteryurkovich/perses/go-sdk/panel-group"
 
 panelgroup.Collapsed(true)
 ```
@@ -74,8 +74,8 @@ Collapsed panel group are lazy loaded when they are opened.
 ### AddPanel
 
 ```golang
-import "github.com/perses/perses/go-sdk/panel-group"
-import "github.com/perses/perses/go-sdk/panel"
+import "github.com/peteryurkovich/perses/go-sdk/panel-group"
+import "github.com/peteryurkovich/perses/go-sdk/panel"
 
 var panelOptions []panel.Option
 panelgroup.AddPanel("MySuperPanelName", panelOptions...)
@@ -90,9 +90,9 @@ More info about the panel can be found [here](panel.md).
 package main
 
 import (
-	"github.com/perses/perses/go-sdk/dashboard"
-	"github.com/perses/perses/go-sdk/panel"
-	panelgroup "github.com/perses/perses/go-sdk/panel-group"
+	"github.com/peteryurkovich/perses/go-sdk/dashboard"
+	"github.com/peteryurkovich/perses/go-sdk/panel"
+	panelgroup "github.com/peteryurkovich/perses/go-sdk/panel-group"
 	"github.com/perses/plugins/prometheus/sdk/go/query"
 	timeseries "github.com/perses/plugins/timeserieschart/sdk/go"
 )

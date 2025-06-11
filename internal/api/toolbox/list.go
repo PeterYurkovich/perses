@@ -20,10 +20,10 @@ import (
 	"github.com/brunoga/deep"
 	"github.com/labstack/echo/v4"
 	"github.com/perses/common/async"
-	apiInterface "github.com/perses/perses/internal/api/interface"
-	"github.com/perses/perses/internal/api/rbac"
-	"github.com/perses/perses/pkg/model/api"
-	"github.com/perses/perses/pkg/model/api/v1/role"
+	apiInterface "github.com/peteryurkovich/perses/internal/api/interface"
+	"github.com/peteryurkovich/perses/internal/api/rbac"
+	"github.com/peteryurkovich/perses/pkg/model/api"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/role"
 	"github.com/tidwall/gjson"
 )
 
@@ -70,7 +70,7 @@ func (t *toolbox[T, K, V]) listWhenPermissionIsActivated(ctx echo.Context, param
 	}
 
 	// Special case if the user is getting the list of the project, as "project" is not considered has a global scope.
-	// More explanation about why it's not a global scope available here: https://github.com/perses/perses/blob/611b7993257dcadb18d48de945ad4def18889bec/pkg/model/api/v1/role/scope.go#L137-L138
+	// More explanation about why it's not a global scope available here: https://github.com/peteryurkovich/perses/blob/611b7993257dcadb18d48de945ad4def18889bec/pkg/model/api/v1/role/scope.go#L137-L138
 	if *scope == role.ProjectScope {
 		return t.listProjectWhenPermissionIsActivated(persesContext, parameters, projects, q)
 	}

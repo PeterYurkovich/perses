@@ -16,7 +16,7 @@ package lint
 import (
 	"testing"
 
-	cmdTest "github.com/perses/perses/internal/cli/test"
+	cmdTest "github.com/peteryurkovich/perses/internal/cli/test"
 )
 
 func TestLintCMD(t *testing.T) {

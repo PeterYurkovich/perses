@@ -18,8 +18,8 @@ import (
 	"fmt"
 	"reflect"
 
-	modelAPI "github.com/perses/perses/pkg/model/api"
-	"github.com/perses/perses/pkg/model/api/v1/common"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
 )
 
 func FilterDatasource[T DatasourceInterface](kind string, defaultDTS *bool, list []T) []T {

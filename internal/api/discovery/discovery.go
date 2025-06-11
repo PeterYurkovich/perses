@@ -15,11 +15,11 @@ package discovery
 
 import (
 	"github.com/perses/common/async/taskhelper"
-	"github.com/perses/perses/internal/api/dependency"
-	httpsd "github.com/perses/perses/internal/api/discovery/http"
-	kubesd "github.com/perses/perses/internal/api/discovery/kubernetes"
-	"github.com/perses/perses/internal/api/discovery/service"
-	"github.com/perses/perses/pkg/model/api/config"
+	"github.com/peteryurkovich/perses/internal/api/dependency"
+	httpsd "github.com/peteryurkovich/perses/internal/api/discovery/http"
+	kubesd "github.com/peteryurkovich/perses/internal/api/discovery/kubernetes"
+	"github.com/peteryurkovich/perses/internal/api/discovery/service"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
 )
 
 func New(cfg config.Config, serviceManager dependency.ServiceManager, caseSensitive bool) ([]taskhelper.Helper, error) {

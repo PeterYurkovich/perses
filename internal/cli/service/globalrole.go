@@ -16,11 +16,11 @@ package service
 import (
 	"strings"
 
-	"github.com/perses/perses/internal/cli/output"
-	v1 "github.com/perses/perses/pkg/client/api/v1"
-	modelAPI "github.com/perses/perses/pkg/model/api"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
-	apiRole "github.com/perses/perses/pkg/model/api/v1/role"
+	"github.com/peteryurkovich/perses/internal/cli/output"
+	v1 "github.com/peteryurkovich/perses/pkg/client/api/v1"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
+	apiRole "github.com/peteryurkovich/perses/pkg/model/api/v1/role"
 )
 
 // buildPermissionMatrix is transforming a list of permissions into a matrix that will be displayed later.

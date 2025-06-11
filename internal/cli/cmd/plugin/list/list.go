@@ -17,12 +17,12 @@ import (
 	"fmt"
 	"io"
 
-	persesCMD "github.com/perses/perses/internal/cli/cmd"
-	"github.com/perses/perses/internal/cli/config"
-	"github.com/perses/perses/internal/cli/opt"
-	"github.com/perses/perses/internal/cli/output"
-	v1 "github.com/perses/perses/pkg/client/api/v1"
-	pluginModel "github.com/perses/perses/pkg/model/api/v1/plugin"
+	persesCMD "github.com/peteryurkovich/perses/internal/cli/cmd"
+	"github.com/peteryurkovich/perses/internal/cli/config"
+	"github.com/peteryurkovich/perses/internal/cli/opt"
+	"github.com/peteryurkovich/perses/internal/cli/output"
+	v1 "github.com/peteryurkovich/perses/pkg/client/api/v1"
+	pluginModel "github.com/peteryurkovich/perses/pkg/model/api/v1/plugin"
 	"github.com/spf13/cobra"
 )
 

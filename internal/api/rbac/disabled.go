@@ -15,7 +15,7 @@ package rbac
 
 import (
 	"github.com/labstack/echo/v4"
-	v1Role "github.com/perses/perses/pkg/model/api/v1/role"
+	v1Role "github.com/peteryurkovich/perses/pkg/model/api/v1/role"
 )
 
 type disabledImpl struct{}

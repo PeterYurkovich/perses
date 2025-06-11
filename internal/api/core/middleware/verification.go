@@ -21,12 +21,12 @@ import (
 	"net/http"
 	"strings"
 
-	apiInterface "github.com/perses/perses/internal/api/interface"
+	apiInterface "github.com/peteryurkovich/perses/internal/api/interface"
 
 	"github.com/labstack/echo/v4"
-	databaseModel "github.com/perses/perses/internal/api/database/model"
-	"github.com/perses/perses/internal/api/interface/v1/project"
-	"github.com/perses/perses/internal/api/utils"
+	databaseModel "github.com/peteryurkovich/perses/internal/api/database/model"
+	"github.com/peteryurkovich/perses/internal/api/interface/v1/project"
+	"github.com/peteryurkovich/perses/internal/api/utils"
 )
 
 type partialMetadata struct {

@@ -21,9 +21,9 @@ import (
 	"os/exec"
 	"strings"
 
-	persesCMD "github.com/perses/perses/internal/cli/cmd"
-	"github.com/perses/perses/internal/cli/config"
-	"github.com/perses/perses/internal/cli/output"
+	persesCMD "github.com/peteryurkovich/perses/internal/cli/cmd"
+	"github.com/peteryurkovich/perses/internal/cli/config"
+	"github.com/peteryurkovich/perses/internal/cli/output"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"golang.org/x/mod/semver"
@@ -37,7 +37,7 @@ const (
 	minVersionForCue = "v0.51.0-beta.0" // Release that brought the move to CUE's new modules -> TODO change to stable v0.51.0 once released
 	exampleCUEDac    = `package mydac
 
-import "github.com/perses/perses/cue/dac-utils/dashboard@v0"
+import "github.com/peteryurkovich/perses/cue/dac-utils/dashboard@v0"
 
 dashboard & { #name: "myDashboardAsCode", #project: "myProject" }`
 )
@@ -197,8 +197,8 @@ func (o *option) Execute() error {
 			return err
 		}
 		// Resolve the sdk dependency
-		if err := exec.Command("go", "get", fmt.Sprintf("github.com/perses/perses@%s", o.version)).Run(); err != nil { // nolint: gosec
-			return fmt.Errorf("unable to get the go dependencies github.com/perses/perses@%s : %w", o.version, err)
+		if err := exec.Command("go", "get", fmt.Sprintf("github.com/peteryurkovich/perses@%s", o.version)).Run(); err != nil { // nolint: gosec
+			return fmt.Errorf("unable to get the go dependencies github.com/peteryurkovich/perses@%s : %w", o.version, err)
 		}
 	} else {
 		return fmt.Errorf("language %q is not supported", o.language)

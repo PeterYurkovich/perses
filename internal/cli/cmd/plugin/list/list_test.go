@@ -16,8 +16,8 @@ package list
 import (
 	"testing"
 
-	cmdTest "github.com/perses/perses/internal/cli/test"
-	fakeapi "github.com/perses/perses/pkg/client/fake/api"
+	cmdTest "github.com/peteryurkovich/perses/internal/cli/test"
+	fakeapi "github.com/peteryurkovich/perses/pkg/client/fake/api"
 )
 
 func TestPluginListCMD(t *testing.T) {

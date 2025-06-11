@@ -16,7 +16,7 @@ package main
 import (
 	_ "embed"
 
-	goreleasergenerate "github.com/perses/perses/scripts/generate-docker-goreleaser-config"
+	goreleasergenerate "github.com/peteryurkovich/perses/scripts/generate-docker-goreleaser-config"
 )
 
 //go:embed .goreleaser.base.yaml

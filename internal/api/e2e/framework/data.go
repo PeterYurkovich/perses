@@ -22,16 +22,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/perses/perses/internal/api/dependency"
-	"github.com/perses/perses/internal/test"
-	"github.com/perses/perses/pkg/model/api"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
-	"github.com/perses/perses/pkg/model/api/v1/common"
-	"github.com/perses/perses/pkg/model/api/v1/datasource"
-	datasourceHTTP "github.com/perses/perses/pkg/model/api/v1/datasource/http"
-	"github.com/perses/perses/pkg/model/api/v1/role"
-	"github.com/perses/perses/pkg/model/api/v1/secret"
-	"github.com/perses/perses/pkg/model/api/v1/variable"
+	"github.com/peteryurkovich/perses/internal/api/dependency"
+	"github.com/peteryurkovich/perses/internal/test"
+	"github.com/peteryurkovich/perses/pkg/model/api"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/datasource"
+	datasourceHTTP "github.com/peteryurkovich/perses/pkg/model/api/v1/datasource/http"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/role"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/secret"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/variable"
 )
 
 type GetFunc func() (api.Entity, error)

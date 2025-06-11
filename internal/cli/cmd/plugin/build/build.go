@@ -23,11 +23,11 @@ import (
 	"path/filepath"
 
 	"github.com/mholt/archives"
-	"github.com/perses/perses/internal/api/archive"
-	"github.com/perses/perses/internal/api/plugin"
-	persesCMD "github.com/perses/perses/internal/cli/cmd"
-	"github.com/perses/perses/internal/cli/cmd/plugin/config"
-	"github.com/perses/perses/internal/cli/output"
+	"github.com/peteryurkovich/perses/internal/api/archive"
+	"github.com/peteryurkovich/perses/internal/api/plugin"
+	persesCMD "github.com/peteryurkovich/perses/internal/cli/cmd"
+	"github.com/peteryurkovich/perses/internal/cli/cmd/plugin/config"
+	"github.com/peteryurkovich/perses/internal/cli/output"
 	"github.com/spf13/cobra"
 )
 

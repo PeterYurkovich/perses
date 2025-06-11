@@ -19,15 +19,15 @@ import (
 	"fmt"
 	"time"
 
-	modelAPI "github.com/perses/perses/pkg/model/api"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	modelAPI "github.com/peteryurkovich/perses/pkg/model/api"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 	"github.com/tidwall/gjson"
 
 	"github.com/go-sql-driver/mysql"
-	databaseFile "github.com/perses/perses/internal/api/database/file"
-	databaseModel "github.com/perses/perses/internal/api/database/model"
-	databaseSQL "github.com/perses/perses/internal/api/database/sql"
-	"github.com/perses/perses/pkg/model/api/config"
+	databaseFile "github.com/peteryurkovich/perses/internal/api/database/file"
+	databaseModel "github.com/peteryurkovich/perses/internal/api/database/model"
+	databaseSQL "github.com/peteryurkovich/perses/internal/api/database/sql"
+	"github.com/peteryurkovich/perses/pkg/model/api/config"
 	promConfig "github.com/prometheus/common/config"
 	"github.com/sirupsen/logrus"
 )

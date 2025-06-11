@@ -16,12 +16,12 @@ package get
 import (
 	"testing"
 
-	"github.com/perses/perses/internal/cli/config"
-	"github.com/perses/perses/internal/cli/resource"
-	cmdTest "github.com/perses/perses/internal/cli/test"
-	test "github.com/perses/perses/internal/test"
-	fakeapi "github.com/perses/perses/pkg/client/fake/api"
-	fakev1 "github.com/perses/perses/pkg/client/fake/api/v1"
+	"github.com/peteryurkovich/perses/internal/cli/config"
+	"github.com/peteryurkovich/perses/internal/cli/resource"
+	cmdTest "github.com/peteryurkovich/perses/internal/cli/test"
+	test "github.com/peteryurkovich/perses/internal/test"
+	fakeapi "github.com/peteryurkovich/perses/pkg/client/fake/api"
+	fakev1 "github.com/peteryurkovich/perses/pkg/client/fake/api/v1"
 )
 
 func TestGetCMD(t *testing.T) {

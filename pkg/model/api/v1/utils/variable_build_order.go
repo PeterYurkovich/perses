@@ -19,10 +19,10 @@ import (
 	"regexp"
 	"strconv"
 
-	v1 "github.com/perses/perses/pkg/model/api/v1"
-	"github.com/perses/perses/pkg/model/api/v1/common"
-	"github.com/perses/perses/pkg/model/api/v1/dashboard"
-	"github.com/perses/perses/pkg/model/api/v1/variable"
+	v1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/common"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/dashboard"
+	"github.com/peteryurkovich/perses/pkg/model/api/v1/variable"
 	"golang.org/x/exp/slices"
 )
 

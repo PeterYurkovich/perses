@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/perses/common/async"
-	"github.com/perses/perses/internal/api/database/model"
-	modelV1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/peteryurkovich/perses/internal/api/database/model"
+	modelV1 "github.com/peteryurkovich/perses/pkg/model/api/v1"
 	"github.com/sirupsen/logrus"
 )
 

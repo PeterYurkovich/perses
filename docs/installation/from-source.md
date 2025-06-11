@@ -17,7 +17,7 @@ You can obtain the source code of the Perses project at the main product page in
 clone the git repository as shown here:
 
 ```shell
-git clone https://github.com/perses/perses.git
+git clone https://github.com/peteryurkovich/perses.git
 ```
 
 Now just move to the Perses project directory and build the project:

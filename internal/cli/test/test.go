@@ -19,8 +19,8 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/perses/perses/internal/cli/config"
-	"github.com/perses/perses/pkg/client/api"
+	"github.com/peteryurkovich/perses/internal/cli/config"
+	"github.com/peteryurkovich/perses/pkg/client/api"
 	"github.com/spf13/cobra"
 	"github.com/stretchr/testify/assert"
 )

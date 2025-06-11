@@ -16,8 +16,8 @@ package auth
 import (
 	"net/http"
 
-	"github.com/perses/perses/internal/api/crypto"
-	"github.com/perses/perses/internal/api/interface"
+	"github.com/peteryurkovich/perses/internal/api/crypto"
+	apiinterface "github.com/peteryurkovich/perses/internal/api/interface"
 	"github.com/sirupsen/logrus"
 )
 
