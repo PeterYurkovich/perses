@@ -28,7 +28,6 @@ import {
   ConfigRoute,
   ExploreRoute,
   ExternalSignInRoute,
-  getBasePathName,
   ImportRoute,
   ProfileRoute,
   ProjectRoute,
