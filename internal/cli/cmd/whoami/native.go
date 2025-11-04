@@ -11,12 +11,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export const AdminRoute = '/admin';
-export const SignInRoute = '/sign-in';
-export const SignUpRoute = '/sign-up';
-export const ExternalSignInRoute = '/external-sign-in';
-export const ConfigRoute = '/config';
-export const ImportRoute = '/import';
-export const ProjectRoute = '/projects';
-export const ExploreRoute = '/explore';
-export const ProfileRoute = '/profile';
+package whoami
+
+import (
+	"fmt"
+
+	"github.com/golang-jwt/jwt/v5"
+)
+
+type nativeWhoami struct {
+	credentials string
+}
+
+func (n *nativeWhoami) Whoami() (string, error) {
+	claims := &jwt.RegisteredClaims{}
+	token, _, err := jwt.NewParser().ParseUnverified(n.credentials, claims)
+	if err != nil {
+		return "", err
+	}
+	return token.Claims.(*jwt.RegisteredClaims).Subject, nil
+}
+
+func (n *nativeWhoami) TokenMessage() string {
+	return fmt.Sprintf("Token used: %s", n.credentials)
+}

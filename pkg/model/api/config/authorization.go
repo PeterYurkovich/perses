@@ -92,16 +92,19 @@ func (n *NativeAuthorizationProvider) Verify() error {
 }
 
 type AuthorizationProvider struct {
-	Kubernetes KubernetesProvider          `json:"kubernetes,omitzero" yaml:"kubernetes,omitempty"`
-	Native     NativeAuthorizationProvider `json:"native,omitzero" yaml:"native,omitempty"`
+	// +optional
+	Kubernetes KubernetesProvider `json:"kubernetes,omitzero" yaml:"kubernetes,omitempty"`
+	// +optional
+	Native NativeAuthorizationProvider `json:"native,omitzero" yaml:"native,omitempty"`
 }
 
 type AuthorizationConfig struct {
 	// DEPRECATED: use NativeAuthorizationProvider.CheckLatestUpdateInterval instead.
 	CheckLatestUpdateInterval common.Duration `json:"check_latest_update_interval,omitempty" yaml:"check_latest_update_interval,omitempty"`
 	// DEPRECATED: use NativeAuthorizationProvider.GuestPermissions instead.
-	GuestPermissions []*role.Permission    `json:"guest_permissions,omitempty" yaml:"guest_permissions,omitempty"`
-	Provider         AuthorizationProvider `json:"provider,omitzero" yaml:"provider,omitempty"`
+	GuestPermissions []*role.Permission `json:"guest_permissions,omitempty" yaml:"guest_permissions,omitempty"`
+	// +optional
+	Provider AuthorizationProvider `json:"provider,omitzero" yaml:"provider,omitempty"`
 }
 
 func (a *AuthorizationConfig) Verify() error {

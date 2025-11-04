@@ -18,10 +18,12 @@ package user
 import (
 	"fmt"
 	"net/http"
+	"net/url"
 
 	"github.com/labstack/echo/v4"
 	"github.com/perses/perses/internal/api/authorization"
-	"github.com/perses/perses/internal/api/interface"
+	"github.com/perses/perses/internal/api/impl/auth"
+	apiinterface "github.com/perses/perses/internal/api/interface"
 	"github.com/perses/perses/internal/api/interface/v1/user"
 	"github.com/perses/perses/internal/api/route"
 	"github.com/perses/perses/internal/api/toolbox"
@@ -58,6 +60,7 @@ func (e *endpoint) CollectRoutes(g *route.Group) {
 		group.DELETE(fmt.Sprintf("/:%s", utils.ParamName), e.Delete, false)
 	}
 	group.GET("", e.List, false)
+	group.GET(fmt.Sprintf("/%s", utils.PathMe), e.Me, false)
 	group.GET(fmt.Sprintf("/:%s", utils.ParamName), e.Get, false)
 	group.GET(fmt.Sprintf("/:%s/permissions", utils.ParamName), e.GetPermissions, false)
 }
@@ -85,8 +88,31 @@ func (e *endpoint) List(ctx echo.Context) error {
 	return e.toolbox.List(ctx, q)
 }
 
+func (e *endpoint) Me(ctx echo.Context) error {
+	if !e.authz.IsEnabled() {
+		return apiinterface.HandleUnauthorizedError("authentication is required to retrieve user permissions")
+	}
+
+	username, err := e.authz.GetUsername(ctx)
+	if err != nil || username == "" {
+		return apiinterface.HandleUnauthorizedError("failed to retrieve user information from context")
+	}
+
+	return ctx.JSON(http.StatusOK, &auth.ExternalUserInfoProfile{
+		Name: username,
+	})
+}
+
 func (e *endpoint) GetPermissions(ctx echo.Context) error {
 	parameters := toolbox.ExtractParameters(ctx, e.caseSensitive)
+	// Since external usernames (k8s, etc) can contain colons and other non-standard
+	// characters,the urls containing usernames with them will be % encoded, so
+	// we need to decode the username url path to check against the authentication
+	// values sent with the request
+	paramUsername, err := url.PathUnescape(parameters.Name)
+	if err != nil {
+		return err
+	}
 	if !e.authz.IsEnabled() {
 		return apiinterface.HandleUnauthorizedError("authentication is required to retrieve user permissions")
 	}
@@ -94,7 +120,7 @@ func (e *endpoint) GetPermissions(ctx echo.Context) error {
 	if err != nil {
 		return apiinterface.HandleUnauthorizedError("failed to retrieve username from context")
 	}
-	if username != parameters.Name {
+	if username != paramUsername {
 		return apiinterface.HandleForbiddenError("you can only retrieve your permissions")
 	}
 	permissions, err := e.authz.GetPermissions(ctx)
