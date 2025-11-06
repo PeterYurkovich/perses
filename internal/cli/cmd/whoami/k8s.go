@@ -16,33 +16,12 @@ package whoami
 import (
 	"fmt"
 
-	"github.com/perses/perses/internal/api/impl/auth"
-	"github.com/perses/perses/internal/api/utils"
 	"github.com/perses/perses/internal/cli/config"
 	"github.com/perses/perses/pkg/client/api"
 )
 
 type k8sWhoami struct {
 	apiClient api.ClientInterface
-}
-
-func (n *k8sWhoami) Whoami() (string, error) {
-	result := &auth.ExternalUserInfoProfile{}
-
-	res := n.apiClient.RESTClient().Get().
-		APIVersion("v1").
-		Resource(fmt.Sprintf("/%s/%s", utils.PathUser, utils.PathMe)).
-		Do()
-
-	if err := res.Error(); err != nil {
-		return "", err
-	}
-	err := res.Object(result)
-	if err != nil {
-		return "", err
-	}
-
-	return result.Name, nil
 }
 
 func (n *k8sWhoami) TokenMessage() string {

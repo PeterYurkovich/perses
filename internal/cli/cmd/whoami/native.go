@@ -15,21 +15,10 @@ package whoami
 
 import (
 	"fmt"
-
-	"github.com/golang-jwt/jwt/v5"
 )
 
 type nativeWhoami struct {
 	credentials string
-}
-
-func (n *nativeWhoami) Whoami() (string, error) {
-	claims := &jwt.RegisteredClaims{}
-	token, _, err := jwt.NewParser().ParseUnverified(n.credentials, claims)
-	if err != nil {
-		return "", err
-	}
-	return token.Claims.(*jwt.RegisteredClaims).Subject, nil
 }
 
 func (n *nativeWhoami) TokenMessage() string {
