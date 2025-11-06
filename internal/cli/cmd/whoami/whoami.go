@@ -17,15 +17,17 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/perses/perses/internal/api/impl/auth"
+	"github.com/perses/perses/internal/api/utils"
 	persesCMD "github.com/perses/perses/internal/cli/cmd"
 	"github.com/perses/perses/internal/cli/config"
 	"github.com/perses/perses/internal/cli/output"
+	"github.com/perses/perses/pkg/client/api"
 	"github.com/perses/perses/pkg/model/api/v1/secret"
 	"github.com/spf13/cobra"
 )
 
 type whoamiOption interface {
-	Whoami() (string, error)
 	TokenMessage() string
 }
 
@@ -36,10 +38,18 @@ type option struct {
 	showToken     bool
 	showURL       bool
 	authorization *secret.Authorization
+	apiClient     api.ClientInterface
 }
 
 func (o *option) Complete(_ []string) error {
 	o.authorization = config.Global.RestClientConfig.Authorization
+
+	apiClient, err := config.Global.GetAPIClient()
+	if err != nil {
+		return err
+	}
+	o.apiClient = apiClient
+
 	return nil
 }
 
@@ -67,11 +77,30 @@ func (o *option) Execute() error {
 			return err
 		}
 	}
-	username, err := whoamiOption.Whoami()
+	username, err := o.Whoami()
 	if err != nil {
 		return err
 	}
 	return output.HandleString(o.writer, fmt.Sprintf("User used: %s", username))
+}
+
+func (o *option) Whoami() (string, error) {
+	res := o.apiClient.RESTClient().Get().
+		APIVersion("v1").
+		Resource(fmt.Sprintf("/%s/%s", utils.PathUser, utils.PathMe)).
+		Do()
+
+	if err := res.Error(); err != nil {
+		return "", err
+	}
+
+	result := &auth.ExternalUserInfoProfile{}
+	err := res.Object(result)
+	if err != nil {
+		return "", err
+	}
+
+	return result.Name, nil
 }
 
 func (o *option) SetWriter(writer io.Writer) {
