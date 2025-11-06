@@ -51,7 +51,7 @@ export function useNativeAuthMutation(): UseMutationResult<void, Error, NativeAu
 }
 
 export function nativeAuth(body: NativeAuthBody): Promise<void> {
-  const url = buildURL({ resource: `${authResource}/providers/native/login`, apiPrefix: '/api' });
+  const url = buildURL({ resource: `${authResource}/providers/native/login`, apiURL: '/api' });
   return fetchJson<void>(url, {
     method: HTTPMethodPOST,
     headers: HTTPHeader,
