@@ -86,7 +86,7 @@ type endpoint struct {
 	jwt             crypto.JWT
 	tokenManagement tokenManagement
 	isAuthEnable    bool
-	isNativeAuth    bool
+	isExternalAuth  bool
 }
 
 func New(dao user.DAO, jwt crypto.JWT, authz authorization.Authorization, providers config.AuthProviders, isAuthEnable bool) (route.Endpoint, error) {
@@ -95,7 +95,7 @@ func New(dao user.DAO, jwt crypto.JWT, authz authorization.Authorization, provid
 		tokenManagement: tokenManagement{jwt: jwt},
 		isAuthEnable:    isAuthEnable,
 		// Currently the only external to perses authorization provider is kubernetes
-		isNativeAuth: !providers.KubernetesProvider.Enable,
+		isExternalAuth: providers.KubernetesProvider.Enable,
 	}
 
 	// Register the native provider if enabled
@@ -131,7 +131,7 @@ func (e *endpoint) CollectRoutes(g *route.Group) {
 	for _, ep := range e.endpoints {
 		ep.CollectRoutes(providersGroup)
 	}
-	if e.isNativeAuth {
+	if !e.isExternalAuth {
 		g.POST(fmt.Sprintf("/%s/%s", utils.PathAuth, utils.PathRefresh), e.refresh, true)
 		g.GET(fmt.Sprintf("/%s/%s", utils.PathAuth, utils.PathLogout), e.logout, true)
 	}
