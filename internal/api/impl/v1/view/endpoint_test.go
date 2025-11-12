@@ -51,6 +51,10 @@ func (t *testRBAC) GetUsername(_ echo.Context) (string, error) {
 	return "", nil
 }
 
+func (t *testRBAC) GetPublicUser(_ echo.Context) (*v1.PublicUser, error) {
+	return nil, nil
+}
+
 func (t *testRBAC) Middleware(_ middleware.Skipper) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {

@@ -17,12 +17,12 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/perses/perses/internal/api/impl/auth"
 	"github.com/perses/perses/internal/api/utils"
 	persesCMD "github.com/perses/perses/internal/cli/cmd"
 	"github.com/perses/perses/internal/cli/config"
 	"github.com/perses/perses/internal/cli/output"
 	"github.com/perses/perses/pkg/client/api"
+	v1 "github.com/perses/perses/pkg/model/api/v1"
 	"github.com/perses/perses/pkg/model/api/v1/secret"
 	"github.com/spf13/cobra"
 )
@@ -94,13 +94,13 @@ func (o *option) Whoami() (string, error) {
 		return "", err
 	}
 
-	result := &auth.ExternalUserInfoProfile{}
+	result := &v1.PublicUser{}
 	err := res.Object(result)
 	if err != nil {
 		return "", err
 	}
 
-	return result.Name, nil
+	return result.Metadata.GetName(), nil
 }
 
 func (o *option) SetWriter(writer io.Writer) {

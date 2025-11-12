@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { fetchJson } from '@perses-dev/core';
+import { fetchJson, UserResource } from '@perses-dev/core';
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 import { useAuthorizationProvider } from '../../context/Config';
@@ -24,22 +24,22 @@ export type ExternalAuthProviders = 'none' | 'kubernetes';
 
 export function useExternalUsername(): string {
   const me = useExternalAuthn();
-  return me.data?.name ?? '';
+  return me.data?.metadata.name ?? '';
 }
 
-export function useExternalAuthn(): UseQueryResult<{ name: string }, Error> {
+export function useExternalAuthn(): UseQueryResult<UserResource, Error> {
   const authProvider = useAuthorizationProvider();
-  return useQuery<{ name: string }, Error>({
+  return useQuery<UserResource, Error>({
     queryKey: [authnResource],
     queryFn: externalAuthn,
     enabled: authProvider === 'external',
   });
 }
 
-export function externalAuthn(): Promise<{ name: string }> {
+export function externalAuthn(): Promise<UserResource> {
   // for now the only external authentication option is kubernetes
   const url = buildURL({ resource: `${userResource}/me` });
-  return fetchJson<{ name: string }>(url, {
+  return fetchJson<UserResource>(url, {
     method: HTTPMethodGET,
     headers: HTTPHeader,
   });

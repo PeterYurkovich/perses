@@ -22,7 +22,7 @@ import (
 
 func TestSaveProviderInfo(t *testing.T) {
 	uInfoA := oidcUserInfo{
-		ExternalUserInfoProfile: ExternalUserInfoProfile{
+		externalUserInfoProfile: externalUserInfoProfile{
 			Email: "email",
 		},
 		Subject: "subject",
@@ -30,7 +30,7 @@ func TestSaveProviderInfo(t *testing.T) {
 	}
 
 	uInfoB := oidcUserInfo{
-		ExternalUserInfoProfile: ExternalUserInfoProfile{
+		externalUserInfoProfile: externalUserInfoProfile{
 			Email: "differentEmail",
 		},
 		Subject: "subject",

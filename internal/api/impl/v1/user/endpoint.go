@@ -22,7 +22,6 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/perses/perses/internal/api/authorization"
-	"github.com/perses/perses/internal/api/impl/auth"
 	apiinterface "github.com/perses/perses/internal/api/interface"
 	"github.com/perses/perses/internal/api/interface/v1/user"
 	"github.com/perses/perses/internal/api/route"
@@ -93,14 +92,11 @@ func (e *endpoint) Me(ctx echo.Context) error {
 		return apiinterface.HandleUnauthorizedError("authentication is required to retrieve user permissions")
 	}
 
-	username, err := e.authz.GetUsername(ctx)
-	if err != nil || username == "" {
+	publicUser, err := e.authz.GetPublicUser(ctx)
+	if err != nil || publicUser.Metadata.GetName() == "" {
 		return apiinterface.HandleUnauthorizedError("failed to retrieve user information from context")
 	}
-
-	return ctx.JSON(http.StatusOK, &auth.ExternalUserInfoProfile{
-		Name: username,
-	})
+	return ctx.JSON(http.StatusOK, publicUser)
 }
 
 func (e *endpoint) GetPermissions(ctx echo.Context) error {

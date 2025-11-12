@@ -23,10 +23,11 @@ type PublicNativeProvider struct {
 }
 
 type PublicUserSpec struct {
-	FirstName      string               `json:"firstName,omitempty" yaml:"firstName,omitempty"`
-	LastName       string               `json:"lastName,omitempty" yaml:"lastName,omitempty"`
-	NativeProvider PublicNativeProvider `json:"nativeProvider,omitempty" yaml:"nativeProvider,omitempty"`
-	OauthProviders []OAuthProvider      `json:"oauthProviders,omitempty" yaml:"oauthProviders,omitempty"`
+	FirstName           string               `json:"firstName,omitempty" yaml:"firstName,omitempty"`
+	LastName            string               `json:"lastName,omitempty" yaml:"lastName,omitempty"`
+	NativeProvider      PublicNativeProvider `json:"nativeProvider,omitempty" yaml:"nativeProvider,omitempty"`
+	OauthProviders      []OAuthProvider      `json:"oauthProviders,omitempty" yaml:"oauthProviders,omitempty"`
+	ExternalK8sProvider bool                 `json:"externalK8sProvider,omitempty" yaml:"externalK8sProvider,omitempty"`
 }
 
 func NewPublicUserSpec(u UserSpec) PublicUserSpec {
@@ -36,7 +37,8 @@ func NewPublicUserSpec(u UserSpec) PublicUserSpec {
 		NativeProvider: PublicNativeProvider{
 			Password: secret.Hidden(u.NativeProvider.Password),
 		},
-		OauthProviders: u.OauthProviders,
+		OauthProviders:      u.OauthProviders,
+		ExternalK8sProvider: false,
 	}
 }
 
