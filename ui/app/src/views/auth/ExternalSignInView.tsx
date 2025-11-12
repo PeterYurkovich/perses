@@ -34,11 +34,11 @@ function ExternalSignInView(): ReactElement {
   const isLaptopSize = useIsLaptopSize();
 
   useEffect(() => {
-    if (authCheck?.data?.name) {
+    if (authCheck?.data?.metadata?.name) {
       successSnackbar(`Successfully login`);
       navigate(redirectPath);
     }
-  }, [authCheck?.data?.name, successSnackbar, navigate, exceptionSnackbar, redirectPath]);
+  }, [authCheck?.data?.metadata?.name, successSnackbar, navigate, exceptionSnackbar, redirectPath]);
 
   return (
     <Stack

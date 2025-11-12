@@ -41,7 +41,7 @@ import (
 
 // oidcUserInfo implements externalUserInfo for the OIDC providers
 type oidcUserInfo struct {
-	ExternalUserInfoProfile
+	externalUserInfoProfile
 	Subject string `json:"sub,omitempty"`
 	// issuer is not supposed to be taken from json, but instead it must be set right before the db sync.
 	issuer string
@@ -63,8 +63,8 @@ func (u *oidcUserInfo) GetLogin() string {
 }
 
 // GetProfile implements [externalUserInfo]
-func (u *oidcUserInfo) GetProfile() ExternalUserInfoProfile {
-	return u.ExternalUserInfoProfile
+func (u *oidcUserInfo) GetProfile() externalUserInfoProfile {
+	return u.externalUserInfoProfile
 }
 
 // GetProviderContext implements [externalUserInfo]

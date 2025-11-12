@@ -106,6 +106,20 @@ func (n *native) GetUsername(ctx echo.Context) (string, error) {
 	return usr.(jwt.Claims).GetSubject()
 }
 
+func (n *native) GetPublicUser(ctx echo.Context) (*v1.PublicUser, error) {
+	username, err := n.GetUsername(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	user, err := n.userDAO.Get(username)
+	if err != nil {
+		return nil, err
+	}
+
+	return v1.NewPublicUser(user), nil
+}
+
 func (n *native) Middleware(skipper middleware.Skipper) echo.MiddlewareFunc {
 	jwtMiddlewareConfig := echojwt.Config{
 		Skipper: skipper,

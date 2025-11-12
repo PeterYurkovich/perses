@@ -152,6 +152,19 @@ func (k *k8sImpl) GetUsername(ctx echo.Context) (string, error) {
 	return k8sUser.GetName(), nil
 }
 
+func (k *k8sImpl) GetPublicUser(ctx echo.Context) (*v1.PublicUser, error) {
+	username, err := k.GetUsername(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	return &v1.PublicUser{
+		Kind:     v1.KindUser,
+		Metadata: *v1.NewMetadata(username),
+		Spec:     v1.PublicUserSpec{},
+	}, nil
+}
+
 // Middleware implements [Authorization]
 func (k *k8sImpl) Middleware(skipper middleware.Skipper) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
