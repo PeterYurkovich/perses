@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package secret
+package v1
 
 import (
 	"encoding/json"
@@ -20,21 +20,6 @@ import (
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 )
-
-// The K8sAuth structs are used to save the kubeconfig file location on disk, and and have some
-// utilities around loading that file or the information in it for use
-type PublicK8sAuth struct {
-	KubeconfigFile string `json:"kubeconfig,omitempty" yaml:"kubeconfig,omitempty"`
-}
-
-func NewPublicK8sAuth(b *K8sAuth) *PublicK8sAuth {
-	if b == nil {
-		return nil
-	}
-	return &PublicK8sAuth{
-		KubeconfigFile: b.KubeconfigFile,
-	}
-}
 
 type K8sAuth struct {
 	KubeconfigFile string `json:"kubeconfig,omitempty" yaml:"kubeconfig,omitempty"`
