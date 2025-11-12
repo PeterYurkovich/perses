@@ -27,7 +27,6 @@ import (
 	"github.com/perses/perses/pkg/model/api/config"
 	v1 "github.com/perses/perses/pkg/model/api/v1"
 	v1Role "github.com/perses/perses/pkg/model/api/v1/role"
-	"github.com/perses/perses/pkg/model/api/v1/secret"
 	"github.com/sirupsen/logrus"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apiserver/pkg/apis/apiserver"
@@ -46,7 +45,7 @@ func New(conf config.Config) (*k8sImpl, error) {
 	if !conf.Security.Authorization.Provider.Kubernetes.Enable {
 		return nil, fmt.Errorf("kubernetes authorization is not enabled")
 	}
-	kubeconfig, err := secret.InitKubeConfig(conf.Security.Authorization.Provider.Kubernetes.Kubeconfig)
+	kubeconfig, err := v1.InitKubeConfig(conf.Security.Authorization.Provider.Kubernetes.Kubeconfig)
 	if err != nil {
 		return nil, err
 	}

@@ -75,6 +75,10 @@ func (t *testRBAC) IsEnabled() bool {
 	return true
 }
 
+func (t *testRBAC) IsNative() bool {
+	return true
+}
+
 func (t *testRBAC) RefreshPermissions() error {
 	return nil
 }
