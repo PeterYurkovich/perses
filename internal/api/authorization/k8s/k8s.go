@@ -491,7 +491,7 @@ func GetK8sUser(userStruct any) (user.Info, error) {
 }
 
 // newAuthorizer creates an authorizer compatible with the kubelet's needs
-func newAuthorizer(client authorizationclient.AuthorizationV1Interface, conf config.KubernetesProvider) (authorizer.Authorizer, error) {
+func newAuthorizer(client authorizationclient.AuthorizationV1Interface, conf config.KubernetesAuthorizationProvider) (authorizer.Authorizer, error) {
 	if client == nil {
 		return nil, errors.New("no client provided, cannot use webhook authorization")
 	}
@@ -505,7 +505,7 @@ func newAuthorizer(client authorizationclient.AuthorizationV1Interface, conf con
 }
 
 // newAuthenticator creates an authenticator compatible with the kubelets needs
-func newAuthenticator(client authenticationclient.AuthenticationV1Interface, conf config.KubernetesProvider) (authenticator.Request, error) {
+func newAuthenticator(client authenticationclient.AuthenticationV1Interface, conf config.KubernetesAuthorizationProvider) (authenticator.Request, error) {
 	if client == nil {
 		return nil, errors.New("tokenaccessreview client not provided, cannot use webhook authentication")
 	}
