@@ -17,12 +17,9 @@ import (
 	"fmt"
 
 	"github.com/perses/perses/internal/cli/config"
-	"github.com/perses/perses/pkg/client/api"
 )
 
-type k8sWhoami struct {
-	apiClient api.ClientInterface
-}
+type k8sWhoami struct{}
 
 func (n *k8sWhoami) TokenMessage() string {
 	return fmt.Sprintf("Kubeconfig file used: %s", config.Global.RestClientConfig.K8sAuth.KubeconfigFile)
