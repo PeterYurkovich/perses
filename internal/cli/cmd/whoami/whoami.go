@@ -113,13 +113,7 @@ func (o *option) SetErrWriter(errWriter io.Writer) {
 
 func (o *option) newWhoamiOption() (whoamiOption, error) {
 	if config.Global.RestClientConfig.K8sAuth != nil {
-		apiClient, err := config.Global.GetAPIClient()
-		if err != nil {
-			return nil, err
-		}
-		return &k8sWhoami{
-			apiClient: apiClient,
-		}, nil
+		return &k8sWhoami{}, nil
 	}
 	return &nativeWhoami{
 		credentials: o.authorization.Credentials,
