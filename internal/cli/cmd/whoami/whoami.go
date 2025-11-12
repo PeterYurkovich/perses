@@ -27,10 +27,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-type whoamiOption interface {
-	TokenMessage() string
-}
-
 type option struct {
 	persesCMD.Option
 	writer        io.Writer
@@ -61,14 +57,8 @@ func (o *option) Validate() error {
 }
 
 func (o *option) Execute() error {
-
-	whoamiOption, err := o.newWhoamiOption()
-	if err != nil {
-		return err
-	}
-
 	if o.showToken {
-		if err := output.HandleString(o.writer, whoamiOption.TokenMessage()); err != nil {
+		if err := output.HandleString(o.writer, o.tokenMessage()); err != nil {
 			return err
 		}
 	}
@@ -111,13 +101,11 @@ func (o *option) SetErrWriter(errWriter io.Writer) {
 	o.errWriter = errWriter
 }
 
-func (o *option) newWhoamiOption() (whoamiOption, error) {
+func (o *option) tokenMessage() string {
 	if config.Global.RestClientConfig.K8sAuth != nil {
-		return &k8sWhoami{}, nil
+		return fmt.Sprintf("Kubeconfig file used: %s", config.Global.RestClientConfig.K8sAuth.KubeconfigFile)
 	}
-	return &nativeWhoami{
-		credentials: o.authorization.Credentials,
-	}, nil
+	return fmt.Sprintf("Token used: %s", o.authorization.Credentials)
 }
 
 func NewCMD() *cobra.Command {
