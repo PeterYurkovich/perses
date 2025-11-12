@@ -102,6 +102,11 @@ func (k *k8sImpl) IsEnabled() bool {
 	return true
 }
 
+// IsNative implements [Authorization]
+func (k *k8sImpl) IsNative() bool {
+	return false
+}
+
 // GetUser implements [Authorization]
 func (k *k8sImpl) GetUser(ctx echo.Context) (any, error) {
 	// Context can be nil when the function is called outside the request context.
@@ -152,6 +157,7 @@ func (k *k8sImpl) GetUsername(ctx echo.Context) (string, error) {
 	return k8sUser.GetName(), nil
 }
 
+// GetPublicUser implements [Authorization]
 func (k *k8sImpl) GetPublicUser(ctx echo.Context) (*v1.PublicUser, error) {
 	username, err := k.GetUsername(ctx)
 	if err != nil {
