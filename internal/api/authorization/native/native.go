@@ -76,6 +76,10 @@ func (n *native) IsEnabled() bool {
 	return true
 }
 
+func (n *native) IsNative() bool {
+	return true
+}
+
 func (n *native) GetUser(ctx echo.Context) (any, error) {
 	// Context can be nil when the function is called outside the request context.
 	// For example, the provisioning service is calling every service without any context.
