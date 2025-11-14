@@ -24,6 +24,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	apiInterface "github.com/perses/perses/internal/api/interface"
 	"github.com/perses/perses/internal/api/utils"
+	clientConfig "github.com/perses/perses/pkg/client/config"
 	"github.com/perses/perses/pkg/model/api/config"
 	v1 "github.com/perses/perses/pkg/model/api/v1"
 	v1Role "github.com/perses/perses/pkg/model/api/v1/role"
@@ -45,7 +46,7 @@ func New(conf config.Config) (*k8sImpl, error) {
 	if !conf.Security.Authorization.Provider.Kubernetes.Enable {
 		return nil, fmt.Errorf("kubernetes authorization is not enabled")
 	}
-	kubeconfig, err := v1.InitKubeConfig(conf.Security.Authorization.Provider.Kubernetes.Kubeconfig)
+	kubeconfig, err := clientConfig.InitKubeConfig(conf.Security.Authorization.Provider.Kubernetes.Kubeconfig)
 	if err != nil {
 		return nil, err
 	}

@@ -21,7 +21,7 @@ import (
 	"github.com/nexucis/lamenv"
 	"github.com/perses/perses/internal/api/utils"
 	"github.com/perses/perses/pkg/client/api"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
+	"github.com/perses/perses/pkg/client/config"
 	"golang.org/x/oauth2"
 )
 
@@ -38,7 +38,7 @@ func NewK8sLogin(apiClient api.ClientInterface, kubeconfigLocation string) *k8sL
 }
 
 func (k *k8sLogin) Login() (*oauth2.Token, error) {
-	kubeconfig, err := v1.InitKubeConfig(k.kubeconfigLocation)
+	kubeconfig, err := config.InitKubeConfig(k.kubeconfigLocation)
 	if err != nil {
 		return nil, err
 	}

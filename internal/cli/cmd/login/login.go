@@ -25,7 +25,6 @@ import (
 	"github.com/perses/perses/pkg/client/api"
 	clientConfig "github.com/perses/perses/pkg/client/config"
 	backendConfig "github.com/perses/perses/pkg/model/api/config"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
 	"github.com/perses/perses/pkg/model/api/v1/common"
 	"github.com/perses/perses/pkg/model/api/v1/secret"
 	"github.com/spf13/cobra"
@@ -190,7 +189,7 @@ func (o *option) Execute() error {
 		o.refreshToken = token.RefreshToken
 	}
 	if o.kube {
-		o.restConfig.K8sAuth = &v1.K8sAuth{
+		o.restConfig.K8sAuth = &clientConfig.K8sAuth{
 			KubeconfigFile: o.kubeconfig,
 		}
 	}

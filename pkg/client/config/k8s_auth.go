@@ -11,10 +11,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package v1
+package config
 
 import (
-	"encoding/json"
 	"fmt"
 
 	"k8s.io/client-go/rest"
@@ -23,32 +22,6 @@ import (
 
 type K8sAuth struct {
 	KubeconfigFile string `json:"kubeconfig,omitempty" yaml:"kubeconfig,omitempty"`
-}
-
-func (b *K8sAuth) UnmarshalJSON(data []byte) error {
-	var tmp K8sAuth
-	type plain K8sAuth
-	if err := json.Unmarshal(data, (*plain)(&tmp)); err != nil {
-		return err
-	}
-	if err := (&tmp).validate(); err != nil {
-		return err
-	}
-	*b = tmp
-	return nil
-}
-
-func (b *K8sAuth) UnmarshalYAML(unmarshal func(interface{}) error) error {
-	var tmp K8sAuth
-	type plain K8sAuth
-	if err := unmarshal((*plain)(&tmp)); err != nil {
-		return err
-	}
-	if err := (&tmp).validate(); err != nil {
-		return err
-	}
-	*b = tmp
-	return nil
 }
 
 func (b *K8sAuth) GetToken() (string, error) {

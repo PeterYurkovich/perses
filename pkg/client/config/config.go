@@ -24,7 +24,6 @@ import (
 	"github.com/perses/perses/pkg/client/perseshttp"
 	"github.com/perses/perses/pkg/client/transport"
 	"github.com/perses/perses/pkg/model/api"
-	v1 "github.com/perses/perses/pkg/model/api/v1"
 	"github.com/perses/perses/pkg/model/api/v1/common"
 	"github.com/perses/perses/pkg/model/api/v1/secret"
 	"golang.org/x/oauth2"
@@ -39,7 +38,7 @@ type PublicRestConfigClient struct {
 	NativeAuth *api.PublicAuth         `json:"native_auth,omitempty" yaml:"native_auth,omitempty"`
 	Oauth      *secret.PublicOAuth     `json:"oauth_config,omitempty" yaml:"oauth_config,omitempty"`
 	BasicAuth  *secret.PublicBasicAuth `json:"basic_auth,omitempty" yaml:"basic_auth,omitempty"`
-	K8sAuth    *v1.K8sAuth             `json:"k8s_auth,omitempty" yaml:"k8s_auth,omitempty"`
+	K8sAuth    *K8sAuth                `json:"k8s_auth,omitempty" yaml:"k8s_auth,omitempty"`
 	// The HTTP authorization credentials for the targets.
 	Authorization *secret.PublicAuthorization `json:"authorization,omitempty" yaml:"authorization,omitempty"`
 	// TLSConfig to use to connect to the targets.
@@ -70,7 +69,7 @@ type RestConfigClient struct {
 	NativeAuth *api.Auth         `json:"native_auth,omitempty" yaml:"native_auth,omitempty"`
 	OAuth      *secret.OAuth     `json:"oauth,omitempty" yaml:"oauth,omitempty"`
 	BasicAuth  *secret.BasicAuth `json:"basic_auth,omitempty" yaml:"basic_auth,omitempty"`
-	K8sAuth    *v1.K8sAuth       `json:"k8s_auth,omitempty" yaml:"k8s_auth,omitempty"`
+	K8sAuth    *K8sAuth          `json:"k8s_auth,omitempty" yaml:"k8s_auth,omitempty"`
 	// The HTTP authorization credentials for the targets.
 	Authorization *secret.Authorization `json:"authorization,omitempty" yaml:"authorization,omitempty"`
 	// TLSConfig to use to connect to the targets.
