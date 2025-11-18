@@ -45,7 +45,6 @@ const (
 	errSlowDown             = "slow_down"
 	errAccessDenied         = "access_denied"
 	errExpiredToken         = "expired_token"
-	defaultKubeconfig       = "default_kubeconfig"
 )
 
 type loginOption interface {
@@ -359,6 +358,9 @@ percli login https://demo.perses.dev
 percli login https://demo.perses.dev --provider <slug_id> --client-id <client_id> --client-secret <client-secret>
 `,
 		RunE: func(cmd *cobra.Command, args []string) error {
+			if !o.kube {
+				o.kubeconfig = ""
+			}
 			return persesCMD.Run(o, cmd, args)
 		},
 	}
@@ -369,7 +371,7 @@ percli login https://demo.perses.dev --provider <slug_id> --client-id <client_id
 	cmd.Flags().StringVar(&o.clientSecret, "client-secret", "", "Client Secret used for robotic access when using external authentication provider.")
 	cmd.Flags().StringVar(&o.accessToken, "token", "", "Bearer token for authentication to the API server")
 	cmd.Flags().BoolVar(&o.kube, "kube", false, "Sets if the login should use the users login")
-	cmd.Flags().StringVar(&o.kubeconfig, "kubeconfig-file", defaultKubeconfig, "Kubeconfig file location to load Kubernetes token from. Defaults to KUBECONFIG env variable, then HOME/.kube/config if empty")
+	cmd.Flags().StringVar(&o.kubeconfig, "kubeconfig-file", "", "Kubeconfig file location to load Kubernetes token from. Defaults to KUBECONFIG env variable, then HOME/.kube/config if empty")
 
 	cmd.Flags().StringVar(&o.externalAuthProvider, "provider", "", "External authentication provider identifier. (slug_id)")
 	return cmd

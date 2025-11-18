@@ -78,7 +78,7 @@ type kubeconfigStruct struct {
 
 // Extract the appropriate kubeconfig between a passed in value, the environment variable, and the default file location
 func getKubeconfigPath(kubeconfigPath string) (string, error) {
-	if kubeconfigPath != defaultKubeconfig {
+	if kubeconfigPath != "" {
 		return kubeconfigPath, nil
 	}
 
