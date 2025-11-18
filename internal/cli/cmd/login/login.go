@@ -123,20 +123,11 @@ func (o *option) Validate() error {
 		// there is no need to verify that the flags are correctly used since they are all being ignored.
 		return nil
 	}
-	// check if all parameters are properly set and if exclusive flags are not used
-	if len(o.username) > 0 && len(o.accessToken) > 0 {
-		return fmt.Errorf("--token and --username are mutually exclusive")
+	// check if exclusive flags are used together
+	err := o.validateExclusiveFlags()
+	if err != nil {
+		return err
 	}
-	if (len(o.username) > 0 || len(o.accessToken) > 0) && (len(o.clientID) > 0 || len(o.clientSecret) > 0 || len(o.externalAuthProvider) > 0) {
-		return fmt.Errorf("you can not set --username or --token at the same time than --client-id or --client-secret or --provider")
-	}
-	if (o.kube || len(o.kubeconfig) > 0) && (len(o.clientID) > 0 || len(o.clientSecret) > 0 || len(o.externalAuthProvider) > 0) {
-		return fmt.Errorf("you can not set --kube or --kubeconfig-location at the same time than --client-id or --client-secret or --provider")
-	}
-	if (len(o.username) > 0 || len(o.accessToken) > 0) && (o.kube || len(o.kubeconfig) > 0) {
-		return fmt.Errorf("you can not set --username or --token at the same time as --kube or --kubeconfig-location")
-	}
-
 	// check if based on the API config, flags can be used
 	providers := o.remoteConfig.Security.Authentication.Providers
 	if !providers.EnableNative && (len(o.username) > 0 || len(o.password) > 0) {
@@ -326,6 +317,22 @@ func (o *option) promptProvider(options []huh.Option[string]) (string, error) {
 func (o *option) setExternalAuthProvider(kind externalAuthKind, slugID string) {
 	o.externalAuthKind = kind
 	o.externalAuthProvider = slugID
+}
+
+func (o *option) validateExclusiveFlags() error {
+	if len(o.username) > 0 && len(o.accessToken) > 0 {
+		return fmt.Errorf("--token and --username are mutually exclusive")
+	}
+	if (len(o.username) > 0 || len(o.accessToken) > 0) && (len(o.clientID) > 0 || len(o.clientSecret) > 0 || len(o.externalAuthProvider) > 0) {
+		return fmt.Errorf("you can not set --username or --token at the same time than --client-id or --client-secret or --provider")
+	}
+	if (o.kube || len(o.kubeconfig) > 0) && (len(o.clientID) > 0 || len(o.clientSecret) > 0 || len(o.externalAuthProvider) > 0) {
+		return fmt.Errorf("you can not set --kube or --kubeconfig-location at the same time than --client-id or --client-secret or --provider")
+	}
+	if (len(o.username) > 0 || len(o.accessToken) > 0) && (o.kube || len(o.kubeconfig) > 0) {
+		return fmt.Errorf("you can not set --username or --token at the same time as --kube or --kubeconfig-location")
+	}
+	return nil
 }
 
 func (o *option) validateKubernetes(providers backendConfig.AuthProviders) error {
