@@ -50,6 +50,9 @@ func (k *KubernetesAuthorizationProvider) Verify() error {
 	if !k.Enable {
 		return nil
 	}
+	if k.Kubeconfig != "" {
+		logrus.Warn("kubeconfig present, this functionality should not be used in production")
+	}
 	if k.QPS == 0 {
 		k.QPS = 500
 	}
