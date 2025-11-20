@@ -9,7 +9,7 @@ if [ "$SESSION_EXISTS" != "" ]; then
     exit 0
 fi
 
-USER_TOKEN=$(kubectl --kubeconfig=./dev/kubernetes/local/kind-admin create token user --namespace perses)
+USER_TOKEN=$(kubectl --kubeconfig=./dev/kubernetes/local/kind-admin create token user --namespace perses --duration 8760h)
 
 tmux new-session -d -s $SESSION
 
@@ -22,7 +22,7 @@ tmux new-session -d -s $SESSION
 tmux send-keys -t $SESSION:0 'cd ui && npm run start' C-m
 
 tmux split-window -h -t $SESSION:0
-tmux send-keys -t $SESSION:0.1 'make build-api && ./bin/perses --config="./dev/config-kubernetes.yaml" --log.level="debug" --web.listen-address=":8081"' C-m
+tmux send-keys -t $SESSION:0.1 'make build-api && ./bin/perses --config="./dev/config-kubernetes-real.yaml" --log.level="debug" --web.listen-address=":8081"' C-m
 
 tmux split-window -v -t $SESSION:0.1
 tmux send-keys -t $SESSION:0.2 "export USER_TOKEN='$USER_TOKEN'" C-m

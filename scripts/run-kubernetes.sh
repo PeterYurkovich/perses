@@ -17,7 +17,7 @@ kubectl --kubeconfig=./dev/kubernetes/local/kind-admin apply -f ./dev/kubernetes
 # Create Perses backend service account and token, then save to a new kubeconfig file for
 # ease of use
 kubectl --kubeconfig=./dev/kubernetes/local/kind-admin create serviceaccount perses-backend --namespace perses
-PERSES_BACKEND_TOKEN="$(kubectl --kubeconfig=./dev/kubernetes/local/kind-admin create token perses-backend --namespace perses)"
+PERSES_BACKEND_TOKEN="$(kubectl --kubeconfig=./dev/kubernetes/local/kind-admin create token perses-backend --namespace perses --duration 8760h)"
 kubectl --kubeconfig=./dev/kubernetes/local/kind-admin config set-credentials perses-backend --token=$PERSES_BACKEND_TOKEN
 cp ./dev/kubernetes/local/kind-admin ./dev/kubernetes/local/perses-backend
 kubectl --kubeconfig=./dev/kubernetes/local/perses-backend config set-context --current --user=perses-backend
