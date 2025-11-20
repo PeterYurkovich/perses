@@ -74,27 +74,17 @@ func New(conf config.Config) (*k8sImpl, error) {
 		return nil, nil
 	}
 
-	var devBearer string
-	if len(conf.Security.Authorization.Provider.Kubernetes.Kubeconfig) != 0 {
-		// The server is running in development mode with a kubeconfig file set. To make the development
-		// process easier we will inject the Authorization header into any request which doesn't have
-		// one
-		devBearer = fmt.Sprintf("Bearer %s", kubeconfig.BearerToken)
-	}
-
 	return &k8sImpl{
-		authenticator:     kubernetesAuthenticator,
-		authorizer:        k8sAuthorizer,
-		kubeClient:        kubeClient,
-		developmentBearer: devBearer,
+		authenticator: kubernetesAuthenticator,
+		authorizer:    k8sAuthorizer,
+		kubeClient:    kubeClient,
 	}, nil
 }
 
 type k8sImpl struct {
-	authenticator     authenticator.Request
-	authorizer        authorizer.Authorizer
-	kubeClient        kubernetes.Interface
-	developmentBearer string
+	authenticator authenticator.Request
+	authorizer    authorizer.Authorizer
+	kubeClient    kubernetes.Interface
 }
 
 // IsEnabled implements [Authorization]
@@ -177,11 +167,6 @@ func (k *k8sImpl) Middleware(skipper middleware.Skipper) echo.MiddlewareFunc {
 		return func(ctx echo.Context) error {
 			if skipper(ctx) {
 				return next(ctx)
-			}
-			// When running in development mode, inject any request which doesn't have the Authorization
-			// header with the header
-			if len(k.developmentBearer) != 0 && len(ctx.Request().Header.Get("Authorization")) == 0 {
-				ctx.Request().Header.Set("Authorization", k.developmentBearer)
 			}
 
 			_, err := k.GetUser(ctx)

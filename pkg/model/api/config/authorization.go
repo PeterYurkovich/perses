@@ -30,11 +30,9 @@ var (
 
 type KubernetesAuthorizationProvider struct {
 	Enable bool `json:"enable,omitempty" yaml:"enable,omitempty"`
-	// File path to a local kubeconfig file used for local testing/development. The current logged in
-	// user's bearer token will be used for both the backend and as the user being logged into Perses.
-	// The user should have "create" permissions for the `TokenReview` and `SubjectAccessReview`
-	// resources. If this parameter isn't available the pods service account token will be used. This
-	// parameter should not be set in production
+	// The active user in the kubeconfig should have "create" permissions for the `TokenReview` and
+	// `SubjectAccessReview` resources. If the kubeconfig parameter isn't available the pods service
+	// account token will be used
 	Kubeconfig string `json:"kubeconfig,omitempty" yaml:"kubeconfig,omitempty"`
 	// query per second (QPS) the k8s client will use with the apiserver. Default: 500 qps
 	QPS int `json:"qps,omitempty" yaml:"qps,omitempty"`
@@ -51,9 +49,6 @@ type KubernetesAuthorizationProvider struct {
 func (k *KubernetesAuthorizationProvider) Verify() error {
 	if !k.Enable {
 		return nil
-	}
-	if k.Kubeconfig != "" {
-		logrus.Warn("kubeconfig present, this functionality should not be used in production")
 	}
 	if k.QPS == 0 {
 		k.QPS = 500
