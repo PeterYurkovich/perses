@@ -330,7 +330,7 @@ scope:
 					Namespace:       k8sProject,
 					APIGroup:        apiGroup,
 					APIVersion:      apiVersion,
-					Resource:        string(getPersesScope(k8sScope)),
+					Resource:        string(k8sScope),
 					Subresource:     "",
 					Name:            "",
 					ResourceRequest: true,
