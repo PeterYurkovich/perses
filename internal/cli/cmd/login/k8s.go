@@ -15,10 +15,10 @@ package login
 
 import (
 	"fmt"
+	"os"
 	"os/user"
 	"path/filepath"
 
-	"github.com/nexucis/lamenv"
 	"github.com/perses/perses/internal/api/utils"
 	"github.com/perses/perses/pkg/client/api"
 	"github.com/perses/perses/pkg/client/config"
@@ -72,10 +72,6 @@ func (k *k8sLogin) SetMissingInput() error {
 	return nil
 }
 
-type kubeconfigStruct struct {
-	Kubeconfig string
-}
-
 // Extract the appropriate kubeconfig between a passed in value, the environment variable, and the default file location
 func getKubeconfigPath(kubeconfigPath string) (string, error) {
 	if kubeconfigPath != "" {
@@ -83,13 +79,9 @@ func getKubeconfigPath(kubeconfigPath string) (string, error) {
 	}
 
 	// Load KUBECONFIG env variable if "--kubeconfig" didn't receive a location
-	var kubeconfigEnv kubeconfigStruct
-	err := lamenv.Unmarshal(&kubeconfigEnv, []string{})
-	if err != nil {
-		return "", err
-	}
-	if len(kubeconfigEnv.Kubeconfig) != 0 {
-		return kubeconfigEnv.Kubeconfig, nil
+	kubeconfigEnv := os.Getenv("KUBECONFIG")
+	if len(kubeconfigEnv) != 0 {
+		return kubeconfigEnv, nil
 	}
 
 	// If KUBECONFIG isn't set, then attempt to load from the well known "~/.kube/config" location
