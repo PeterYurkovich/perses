@@ -39,7 +39,6 @@ function getUser(name: string): Promise<UserResource> {
 
 function getCurrentUser(): Promise<UserResource> {
   const url = buildURL({ resource: userResource, pathSuffix: ['me'] });
-  console.debug('url', url);
   return fetchJson<UserResource>(url, {
     method: HTTPMethodGET,
     headers: HTTPHeader,

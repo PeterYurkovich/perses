@@ -31,7 +31,6 @@ function ExternalAuthErrorView(): ReactElement {
   const redirectPath = useRedirectQueryParam();
 
   const isLaptopSize = useIsLaptopSize();
-  console.debug('authCheck', authCheck);
 
   useEffect(() => {
     if (authCheck?.data?.metadata?.name) {
