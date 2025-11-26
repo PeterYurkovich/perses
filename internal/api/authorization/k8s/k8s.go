@@ -138,7 +138,7 @@ func (k *k8sImpl) GetUsername(ctx echo.Context) (string, error) {
 	if userStruct == nil {
 		return "", nil // No user found in the context, this is an anonymous endpoint
 	}
-	k8sUser, err := GetK8sUser(userStruct)
+	k8sUser, err := getK8sUser(userStruct)
 	if err != nil {
 		// this case should not happen, as the getK8sUser function should just be used to unwrap any
 		// into the appropriate struct
@@ -193,7 +193,7 @@ func (k *k8sImpl) GetUserProjects(ctx echo.Context, _ v1Role.Action, _ v1Role.Sc
 		return nil, err
 	}
 
-	kubernetesUser, err := GetK8sUser(usr)
+	kubernetesUser, err := getK8sUser(usr)
 	if err != nil {
 		return nil, err
 	}
@@ -226,7 +226,7 @@ func (k *k8sImpl) HasPermission(ctx echo.Context, requestAction v1Role.Action, r
 		return false
 	}
 
-	kubernetesUser, err := GetK8sUser(usr)
+	kubernetesUser, err := getK8sUser(usr)
 	if err != nil {
 		return false
 	}
@@ -282,7 +282,7 @@ func (k *k8sImpl) GetPermissions(ctx echo.Context) (map[string][]*v1Role.Permiss
 		return nil, apiInterface.InternalError
 	}
 
-	kubernetesUser, err := GetK8sUser(usr)
+	kubernetesUser, err := getK8sUser(usr)
 	if err != nil {
 		return nil, err
 	}
@@ -468,7 +468,7 @@ func getK8sAPIGroup(scope k8sScope) string {
 
 // helper function to convert any type into a user.Info. This function should not error, and it is
 // expected that the struct being passed in is user.Info
-func GetK8sUser(userStruct any) (user.Info, error) {
+func getK8sUser(userStruct any) (user.Info, error) {
 	if k8sUser, ok := userStruct.(user.Info); ok {
 		return k8sUser, nil
 	}
