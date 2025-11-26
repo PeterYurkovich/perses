@@ -37,6 +37,15 @@ function getUser(name: string): Promise<UserResource> {
   });
 }
 
+function getCurrentUser(): Promise<UserResource> {
+  const url = buildURL({ resource: userResource, pathSuffix: ['me'] });
+  console.debug('url', url);
+  return fetchJson<UserResource>(url, {
+    method: HTTPMethodGET,
+    headers: HTTPHeader,
+  });
+}
+
 function getUsers(): Promise<UserResource[]> {
   const url = buildURL({ resource: userResource });
   return fetchJson<UserResource[]>(url, {
@@ -84,6 +93,19 @@ export function useUser(name: string): UseQueryResult<UserResource, StatusError>
     queryKey: buildQueryKey({ resource: userResource, name }),
     queryFn: () => {
       return getUser(name);
+    },
+  });
+}
+
+/**
+ * Used to retrieve information on the current logged in User
+ * Will automatically be refreshed when cache is invalidated
+ */
+export function useCurrentUser(): UseQueryResult<UserResource, StatusError> {
+  return useQuery<UserResource, StatusError>({
+    queryKey: buildQueryKey({ resource: userResource, name: 'me' }),
+    queryFn: () => {
+      return getCurrentUser();
     },
   });
 }

@@ -19,7 +19,6 @@ import { TimeRangeSettingsProvider } from '@perses-dev/plugin-system';
 import { buildRelativeTimeOption } from '@perses-dev/components';
 import { Banner, ConfigModel, useConfig } from '../model/config-client';
 import { PersesLoader } from '../components/PersesLoader';
-import { ExternalAuthProviders } from '../model/auth/external-auth-client';
 
 interface ConfigContextType {
   config: ConfigModel;
@@ -182,6 +181,8 @@ export function useIsExternalProviderEnabled(): boolean {
     !!config.security.authentication.providers.oidc?.length || !!config.security.authentication.providers.oauth?.length
   );
 }
+
+type ExternalAuthProviders = 'none' | 'kubernetes';
 
 export function useExternalProvider(): ExternalAuthProviders {
   const { config } = useConfigContext();

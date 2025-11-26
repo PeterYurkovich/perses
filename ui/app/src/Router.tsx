@@ -27,7 +27,7 @@ import {
   AdminRoute,
   ConfigRoute,
   ExploreRoute,
-  ExternalSignInRoute,
+  ExternalAuthErrorRoute,
   ImportRoute,
   ProfileRoute,
   ProjectRoute,
@@ -37,7 +37,7 @@ import {
 import { RequireAuth, RequireAuthEnabled } from './views/auth/RequireAuth';
 import SignInView from './views/auth/SignInView';
 import SignUpView from './views/auth/SignUpView';
-import ExternalSignInView from './views/auth/ExternalSignInView';
+import ExternalAuthErrorView from './views/auth/ExternalAuthErrorView';
 import HomeView from './views/home/HomeView';
 // Default route is eagerly loaded
 import App from './App';
@@ -158,9 +158,9 @@ function Router(): ReactElement {
             children: [{ index: true, Component: SignUpView }],
           },
           {
-            path: ExternalSignInRoute,
+            path: ExternalAuthErrorRoute,
             element: <RequireAuthEnabled />,
-            children: [{ index: true, Component: ExternalSignInView }],
+            children: [{ index: true, Component: ExternalAuthErrorView }],
           },
         ],
       },

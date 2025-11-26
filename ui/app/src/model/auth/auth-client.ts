@@ -15,9 +15,7 @@ import { fetch } from '@perses-dev/core';
 import { useQueryParam } from 'use-query-params';
 import buildURL from '../url-builder';
 import { HTTPHeader, HTTPMethodPOST } from '../http';
-import { useAuthorizationProvider } from '../../context/Config';
-import { useNativeUsername } from './native-auth-client';
-import { useExternalUsername } from './external-auth-client';
+import { useCurrentUser } from '../user-client';
 
 export const authResource = 'auth';
 export const authnResource = 'authn';
@@ -51,18 +49,9 @@ export function refreshToken(): Promise<Response> {
 // Retrieve the currently logged in user's username. Returns an empty string if the user is not
 // logged in
 export function useUsername(): string {
-  const authProvider = useAuthorizationProvider();
-  const nativeUsername = useNativeUsername();
-  const externalUsername = useExternalUsername();
+  const me = useCurrentUser();
 
-  switch (authProvider) {
-    case 'native':
-      return nativeUsername;
-    case 'external':
-      return externalUsername;
-    case 'none':
-      return '';
-  }
+  return me.data?.metadata?.name ?? '';
 }
 
 export function useIsLoggedIn(): boolean {

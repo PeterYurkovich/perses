@@ -15,8 +15,7 @@ import { ReactElement } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useAuthorizationProvider, useIsAuthEnabled } from '../../context/Config';
 import { buildRedirectQueryString, useIsLoggedIn } from '../../model/auth/auth-client';
-import { ExternalSignInRoute, SignInRoute } from '../../model/route';
-import { useExternalUsername } from '../../model/auth/external-auth-client';
+import { ExternalAuthErrorRoute, SignInRoute } from '../../model/route';
 
 function RequireAuth(): ReactElement | null {
   const provider = useAuthorizationProvider();
@@ -62,14 +61,14 @@ function RequireAuthEnabled(): ReactElement {
 }
 
 function RequireExternalAuth(): ReactElement | null {
-  const externalUsername = useExternalUsername();
+  const isLoggedIn = useIsLoggedIn();
   const location = useLocation();
 
-  if (externalUsername) {
+  if (isLoggedIn) {
     return <Outlet />;
   }
 
-  let to = ExternalSignInRoute;
+  let to = ExternalAuthErrorRoute;
   if (location.pathname !== '' && location.pathname !== '/') {
     to += `?${buildRedirectQueryString(location.pathname + location.search)}`;
   }

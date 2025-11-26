@@ -21,17 +21,17 @@ import DarkThemePersesLogo from '../../components/logo/DarkThemePersesLogo';
 import LightThemePersesLogo from '../../components/logo/LightThemePersesLogo';
 import { useDarkMode } from '../../context/DarkMode';
 import { useIsLaptopSize } from '../../utils/browser-size';
-import { useExternalAuthn } from '../../model/auth/external-auth-client';
+import { useCurrentUser } from '../../model/user-client';
 
-function ExternalSignInView(): ReactElement {
-  const authCheck = useExternalAuthn();
-  // default to kubernetes as the default external auth provider
+function ExternalAuthErrorView(): ReactElement {
+  const authCheck = useCurrentUser();
   const navigate = useNavigate();
   const { isDarkModeEnabled } = useDarkMode();
   const { successSnackbar, exceptionSnackbar } = useSnackbar();
   const redirectPath = useRedirectQueryParam();
 
   const isLaptopSize = useIsLaptopSize();
+  console.debug('authCheck', authCheck);
 
   useEffect(() => {
     if (authCheck?.data?.metadata?.name) {
@@ -63,4 +63,4 @@ function ExternalSignInView(): ReactElement {
   );
 }
 
-export default ExternalSignInView;
+export default ExternalAuthErrorView;
