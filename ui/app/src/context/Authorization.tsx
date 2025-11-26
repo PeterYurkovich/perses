@@ -17,7 +17,7 @@ import { useUserPermissions } from '../model/user-client';
 import { useProjectList } from '../model/project-client';
 import { enableRefreshFetch } from '../model/fetch';
 import { useUsername } from '../model/auth/auth-client';
-import { useExternalProvider, useIsAuthEnabled } from './Config';
+import { useExternalAuthenticationProvider, useIsAuthEnabled } from './Config';
 
 // Used as placeholder for checking Global permissions
 export const GlobalProject = '*';
@@ -33,8 +33,8 @@ const AuthorizationContext = createContext<AuthorizationContext | undefined>(und
 // Provide RBAC helpers for checking current user permissions
 export function AuthorizationProvider(props: { children: ReactNode }): ReactElement {
   const enabled = useIsAuthEnabled();
-  const externalProvider = useExternalProvider();
-  if (enabled && externalProvider === 'none') {
+  const externalAuthenticationProvider = useExternalAuthenticationProvider();
+  if (enabled && externalAuthenticationProvider === 'none') {
     // Will refresh the access token if it has expired when fetching data
     enableRefreshFetch();
   }

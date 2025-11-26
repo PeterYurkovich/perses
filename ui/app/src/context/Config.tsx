@@ -182,9 +182,9 @@ export function useIsExternalProviderEnabled(): boolean {
   );
 }
 
-type ExternalAuthProviders = 'none' | 'kubernetes';
+type ExternalAuthenticationProviders = 'none' | 'kubernetes';
 
-export function useExternalProvider(): ExternalAuthProviders {
+export function useExternalAuthenticationProvider(): ExternalAuthenticationProviders {
   const { config } = useConfigContext();
   if (config.security.authentication.providers.kubernetes?.enable) {
     return 'kubernetes';
