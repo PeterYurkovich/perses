@@ -327,10 +327,10 @@ func (o *option) validateExclusiveFlags() error {
 		return fmt.Errorf("you can not set --username or --token at the same time than --client-id or --client-secret or --provider")
 	}
 	if (o.kube || len(o.kubeconfig) > 0) && (len(o.clientID) > 0 || len(o.clientSecret) > 0 || len(o.externalAuthProvider) > 0) {
-		return fmt.Errorf("you can not set --kube or --kubeconfig-location at the same time than --client-id or --client-secret or --provider")
+		return fmt.Errorf("you can not set --kube or --kubeconfig-file at the same time than --client-id or --client-secret or --provider")
 	}
 	if (len(o.username) > 0 || len(o.accessToken) > 0) && (o.kube || len(o.kubeconfig) > 0) {
-		return fmt.Errorf("you can not set --username or --token at the same time as --kube or --kubeconfig-location")
+		return fmt.Errorf("you can not set --username or --token at the same time as --kube or --kubeconfig-file")
 	}
 	return nil
 }
@@ -365,9 +365,6 @@ percli login https://demo.perses.dev
 percli login https://demo.perses.dev --provider <slug_id> --client-id <client_id> --client-secret <client-secret>
 `,
 		RunE: func(cmd *cobra.Command, args []string) error {
-			if !o.kube {
-				o.kubeconfig = ""
-			}
 			return persesCMD.Run(o, cmd, args)
 		},
 	}
