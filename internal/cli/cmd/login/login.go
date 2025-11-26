@@ -343,11 +343,7 @@ func (o *option) validateKubernetes(providers backendConfig.AuthProviders) error
 		return fmt.Errorf("--kubeconfig-file cannot be used without --kube")
 	}
 
-	kubeconfig, err := getKubeconfigPath(o.kubeconfig)
-	if err != nil {
-		return err
-	}
-	o.kubeconfig = kubeconfig
+	o.kubeconfig = getKubeconfigPath(o.kubeconfig)
 
 	return nil
 }

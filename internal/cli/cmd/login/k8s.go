@@ -73,15 +73,15 @@ func (k *k8sLogin) SetMissingInput() error {
 }
 
 // Extract the appropriate kubeconfig between a passed in value, the environment variable, and the default file location
-func getKubeconfigPath(kubeconfigPath string) (string, error) {
+func getKubeconfigPath(kubeconfigPath string) string {
 	if kubeconfigPath != "" {
-		return kubeconfigPath, nil
+		return kubeconfigPath
 	}
 
 	// Load KUBECONFIG env variable if "--kubeconfig" didn't receive a location
 	kubeconfigEnv := os.Getenv("KUBECONFIG")
 	if len(kubeconfigEnv) != 0 {
-		return kubeconfigEnv, nil
+		return kubeconfigEnv
 	}
 
 	// If KUBECONFIG isn't set, then attempt to load from the well known "~/.kube/config" location
@@ -89,5 +89,5 @@ func getKubeconfigPath(kubeconfigPath string) (string, error) {
 	dir := usr.HomeDir
 	defaultFilePath := filepath.Join(dir, ".kube/config")
 
-	return defaultFilePath, nil
+	return defaultFilePath
 }
