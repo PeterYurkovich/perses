@@ -209,7 +209,8 @@ oidc:
 # List of the OIDC authentication providers
 oauth:
   - <OAuth provider> # Optional
-kubernetes: <Kubernetes provider> # Optional
+# Kubernetes authentication provider
+kubernetes: <Kubernetes provider> # Optionall
 ```
 
 ##### OIDC provider
