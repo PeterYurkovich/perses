@@ -171,6 +171,7 @@ func (k *k8sImpl) Middleware(skipper middleware.Skipper) echo.MiddlewareFunc {
 
 			_, err := k.GetUser(ctx)
 			if err != nil {
+				logrus.Error(err.Error())
 				return apiInterface.HandleUnauthorizedError("invalid authorization header")
 			}
 
