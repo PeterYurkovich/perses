@@ -102,21 +102,6 @@ export function useIsAuthEnabled(): boolean {
   return config.security.enable_auth;
 }
 
-export function useAuthorizationProvider(): 'native' | 'external' | 'none' {
-  const { config } = useConfigContext();
-
-  if (config.security.authorization.provider?.native?.enable) {
-    return 'native';
-  }
-
-  // Currently only k8s are supported as an external authorization provider
-  if (config.security.authorization.provider?.kubernetes?.enable) {
-    return 'external';
-  }
-
-  return 'none';
-}
-
 export function useIsSignUpDisable(): boolean {
   const { config } = useConfigContext();
   return config.security.authentication.disable_sign_up;
@@ -170,24 +155,19 @@ export function useBanner(): Banner | undefined {
   return banner;
 }
 
-export function useIsNativeProviderEnabled(): boolean {
+export function useIsNativeAuthnProviderEnabled(): boolean {
   const { config } = useConfigContext();
   return config.security.authentication.providers.enable_native;
 }
 
-export function useIsExternalProviderEnabled(): boolean {
+export function useIsExternalAuthnProviderEnabled(): boolean {
   const { config } = useConfigContext();
   return (
     !!config.security.authentication.providers.oidc?.length || !!config.security.authentication.providers.oauth?.length
   );
 }
 
-type ExternalAuthenticationProviders = 'none' | 'kubernetes';
-
-export function useExternalAuthenticationProvider(): ExternalAuthenticationProviders {
+export function useIsDelegatedAuthnProviderEnabled(): boolean {
   const { config } = useConfigContext();
-  if (config.security.authentication.providers.kubernetes?.enable) {
-    return 'kubernetes';
-  }
-  return 'none';
+  return !!config.security.authentication.providers.kubernetes?.enable;
 }

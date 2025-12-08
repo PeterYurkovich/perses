@@ -101,8 +101,8 @@ func (e *endpoint) Me(ctx echo.Context) error {
 
 func (e *endpoint) GetPermissions(ctx echo.Context) error {
 	parameters := toolbox.ExtractParameters(ctx, e.caseSensitive)
-	// Since external usernames (k8s, etc) can contain colons and other non-standard
-	// characters,the urls containing usernames with them will be % encoded, so
+	// Since delegated authentication usernames (k8s) can contain colons and other characters with conflict
+	// with url standards, the urls containing usernames with them will be % encoded, so
 	// we need to decode the username url path to check against the authentication
 	// values sent with the request
 	paramUsername, err := url.PathUnescape(parameters.Name)

@@ -26,7 +26,7 @@ type disabledImpl struct {
 func (r *disabledImpl) IsEnabled() bool {
 	return false
 }
-func (r *disabledImpl) IsNative() bool {
+func (r *disabledImpl) IsNativeAuthz() bool {
 	return true
 }
 

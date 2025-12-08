@@ -31,16 +31,16 @@ import (
 	"golang.org/x/oauth2"
 )
 
-type externalAuthKind string
+type externalAuthnKind string
 
 const (
-	externalAuthKindOAuth externalAuthKind = utils.AuthKindOAuth
-	externalAuthKindOIDC  externalAuthKind = utils.AuthKindOIDC
-	externalAuthKindK8s   externalAuthKind = utils.AuthKindKubernetes
+	externalAuthnKindOAuth externalAuthnKind = utils.AuthnKindOAuth
+	externalAuthnKindOIDC  externalAuthnKind = utils.AuthnKindOIDC
 )
 
 const (
-	nativeProvider          = "native"
+	nativeAuthnProvider     = "native"
+	delegatedAuthnKindK8s   = utils.AuthnKindKubernetes
 	errAuthorizationPending = "authorization_pending"
 	errSlowDown             = "slow_down"
 	errAccessDenied         = "access_denied"
@@ -54,24 +54,24 @@ type loginOption interface {
 
 type option struct {
 	persesCMD.Option
-	writer               io.Writer
-	errWriter            io.Writer
-	url                  *common.URL
-	isNativeSelected     bool
-	username             string
-	password             string
-	clientID             string
-	clientSecret         string
-	externalAuthKind     externalAuthKind
-	externalAuthProvider string
-	accessToken          string
-	refreshToken         string
-	kube                 bool
-	kubeconfig           string
-	insecureTLS          bool
-	apiClient            api.ClientInterface
-	restConfig           clientConfig.RestConfigClient
-	remoteConfig         *backendConfig.Config
+	writer                io.Writer
+	errWriter             io.Writer
+	url                   *common.URL
+	isNativeAuthnSelected bool
+	username              string
+	password              string
+	clientID              string
+	clientSecret          string
+	externalAuthnKind     externalAuthnKind
+	externalAuthnProvider string
+	accessToken           string
+	refreshToken          string
+	kube                  bool
+	kubeconfig            string
+	insecureTLS           bool
+	apiClient             api.ClientInterface
+	restConfig            clientConfig.RestConfigClient
+	remoteConfig          *backendConfig.Config
 }
 
 func (o *option) Complete(args []string) error {
@@ -131,24 +131,24 @@ func (o *option) Validate() error {
 	// check if based on the API config, flags can be used
 	providers := o.remoteConfig.Security.Authentication.Providers
 	if !providers.EnableNative && (len(o.username) > 0 || len(o.password) > 0) {
-		return fmt.Errorf("username/password input is forbidden as backend does not support native auth provider")
+		return fmt.Errorf("username/password input is forbidden as backend does not support native authentication provider")
 	}
 	if providers.EnableNative && (len(o.username) > 0 || len(o.password) > 0) {
-		o.isNativeSelected = true
+		o.isNativeAuthnSelected = true
 	}
-	if len(o.externalAuthProvider) > 0 {
+	if len(o.externalAuthnProvider) > 0 {
 		for _, prov := range providers.OIDC {
-			if prov.SlugID == o.externalAuthProvider {
-				o.setExternalAuthProvider(externalAuthKindOIDC, prov.SlugID)
+			if prov.SlugID == o.externalAuthnProvider {
+				o.setExternalAuthnProvider(externalAuthnKindOIDC, prov.SlugID)
 			}
 		}
 		for _, prov := range providers.OAuth {
-			if prov.SlugID == o.externalAuthProvider {
-				o.setExternalAuthProvider(externalAuthKindOAuth, prov.SlugID)
+			if prov.SlugID == o.externalAuthnProvider {
+				o.setExternalAuthnProvider(externalAuthnKindOAuth, prov.SlugID)
 			}
 		}
-		if len(o.externalAuthKind) == 0 {
-			return fmt.Errorf("provider %q does not exist", o.externalAuthProvider)
+		if len(o.externalAuthnKind) == 0 {
+			return fmt.Errorf("provider %q does not exist", o.externalAuthnProvider)
 		}
 	}
 	if providers.KubernetesProvider.Enable {
@@ -159,7 +159,7 @@ func (o *option) Validate() error {
 
 func (o *option) Execute() error {
 	if o.remoteConfig.Security.EnableAuth && len(o.accessToken) == 0 {
-		if len(o.externalAuthProvider) == 0 && len(o.username) == 0 && len(o.password) == 0 {
+		if len(o.externalAuthnProvider) == 0 && len(o.username) == 0 && len(o.password) == 0 {
 			if err := o.selectAndSetProvider(); err != nil {
 				return err
 			}
@@ -204,7 +204,7 @@ func (o *option) SetErrWriter(errWriter io.Writer) {
 }
 
 func (o *option) newLoginOption() (loginOption, error) {
-	if o.isNativeSelected {
+	if o.isNativeAuthnSelected {
 		return &nativeLogin{
 			writer:    o.writer,
 			username:  o.username,
@@ -212,25 +212,25 @@ func (o *option) newLoginOption() (loginOption, error) {
 			apiClient: o.apiClient,
 		}, nil
 	}
-	if len(o.externalAuthProvider) > 0 {
+	if len(o.externalAuthnProvider) > 0 {
 		if len(o.clientSecret) > 0 || len(o.clientID) > 0 {
 			return &roboticLogin{
-				writer:               o.writer,
-				externalAuthKind:     o.externalAuthKind,
-				externalAuthProvider: o.externalAuthProvider,
-				clientID:             o.clientID,
-				clientSecret:         o.clientSecret,
-				apiClient:            o.apiClient,
+				writer:                o.writer,
+				externalAuthnKind:     o.externalAuthnKind,
+				externalAuthnProvider: o.externalAuthnProvider,
+				clientID:              o.clientID,
+				clientSecret:          o.clientSecret,
+				apiClient:             o.apiClient,
 			}, nil
 		}
-		if o.externalAuthKind == externalAuthKindK8s {
+		if o.externalAuthnKind == delegatedAuthnKindK8s {
 			return NewK8sLogin(o.apiClient, o.kubeconfig), nil
 		}
 		return &deviceCodeLogin{
-			writer:               o.writer,
-			externalAuthKind:     o.externalAuthKind,
-			externalAuthProvider: o.externalAuthProvider,
-			apiClient:            o.apiClient,
+			writer:                o.writer,
+			externalAuthnKind:     o.externalAuthnKind,
+			externalAuthnProvider: o.externalAuthnProvider,
+			apiClient:             o.apiClient,
 		}, nil
 	}
 	return nil, fmt.Errorf("unable to know what kind of login should be executed")
@@ -246,10 +246,10 @@ func (o *option) selectAndSetProvider() error {
 
 	if providers.EnableNative {
 		optKey := "Native (username/password)"
-		optValue := nativeProvider
+		optValue := nativeAuthnProvider
 		options = append(options, huh.NewOption(optKey, optValue))
 		modifiers[optValue] = func() {
-			o.isNativeSelected = true
+			o.isNativeAuthnSelected = true
 		}
 	}
 
@@ -259,7 +259,7 @@ func (o *option) selectAndSetProvider() error {
 		slugID := prov.SlugID
 		options = append(options, huh.NewOption(optKey, slugID))
 		modifiers[slugID] = func() {
-			o.setExternalAuthProvider(externalAuthKindOIDC, slugID)
+			o.setExternalAuthnProvider(externalAuthnKindOIDC, slugID)
 		}
 	}
 
@@ -269,16 +269,16 @@ func (o *option) selectAndSetProvider() error {
 		slugID := prov.SlugID
 		options = append(options, huh.NewOption(optKey, slugID))
 		modifiers[slugID] = func() {
-			o.setExternalAuthProvider(externalAuthKindOAuth, slugID)
+			o.setExternalAuthnProvider(externalAuthnKindOAuth, slugID)
 		}
 	}
 
 	if providers.KubernetesProvider.Enable {
 		optKey := "Kubernetes"
-		optValue := string(externalAuthKindK8s)
+		optValue := string(delegatedAuthnKindK8s)
 		options = append(options, huh.NewOption(optKey, optValue))
 		modifiers[optValue] = func() {
-			o.setExternalAuthProvider(externalAuthKindK8s, string(externalAuthKindK8s))
+			o.setExternalAuthnProvider(delegatedAuthnKindK8s, string(delegatedAuthnKindK8s))
 		}
 	}
 
@@ -314,19 +314,19 @@ func (o *option) promptProvider(options []huh.Option[string]) (string, error) {
 	return selectedItem, nil
 }
 
-func (o *option) setExternalAuthProvider(kind externalAuthKind, slugID string) {
-	o.externalAuthKind = kind
-	o.externalAuthProvider = slugID
+func (o *option) setExternalAuthnProvider(kind externalAuthnKind, slugID string) {
+	o.externalAuthnKind = kind
+	o.externalAuthnProvider = slugID
 }
 
 func (o *option) validateExclusiveFlags() error {
 	if len(o.username) > 0 && len(o.accessToken) > 0 {
 		return fmt.Errorf("--token and --username are mutually exclusive")
 	}
-	if (len(o.username) > 0 || len(o.accessToken) > 0) && (len(o.clientID) > 0 || len(o.clientSecret) > 0 || len(o.externalAuthProvider) > 0) {
+	if (len(o.username) > 0 || len(o.accessToken) > 0) && (len(o.clientID) > 0 || len(o.clientSecret) > 0 || len(o.externalAuthnProvider) > 0) {
 		return fmt.Errorf("you can not set --username or --token at the same time than --client-id or --client-secret or --provider")
 	}
-	if (o.kube || len(o.kubeconfig) > 0) && (len(o.clientID) > 0 || len(o.clientSecret) > 0 || len(o.externalAuthProvider) > 0) {
+	if (o.kube || len(o.kubeconfig) > 0) && (len(o.clientID) > 0 || len(o.clientSecret) > 0 || len(o.externalAuthnProvider) > 0) {
 		return fmt.Errorf("you can not set --kube or --kubeconfig-file at the same time than --client-id or --client-secret or --provider")
 	}
 	if (len(o.username) > 0 || len(o.accessToken) > 0) && (o.kube || len(o.kubeconfig) > 0) {
@@ -335,9 +335,9 @@ func (o *option) validateExclusiveFlags() error {
 	return nil
 }
 
-func (o *option) validateKubernetes(providers backendConfig.AuthProviders) error {
+func (o *option) validateKubernetes(providers backendConfig.AuthenticationProviders) error {
 	if !providers.KubernetesProvider.Enable {
-		return fmt.Errorf("--kubeconfig-file input is forbidden as backend does not support kubernetes auth provider")
+		return fmt.Errorf("--kubeconfig-file input is forbidden as backend does not support kubernetes authentication provider")
 	}
 	if len(o.kubeconfig) > 0 && !o.kube {
 		return fmt.Errorf("--kubeconfig-file cannot be used without --kube")
@@ -373,6 +373,6 @@ percli login https://demo.perses.dev --provider <slug_id> --client-id <client_id
 	cmd.Flags().BoolVar(&o.kube, "kube", false, "Sets if the login should use the users login")
 	cmd.Flags().StringVar(&o.kubeconfig, "kubeconfig-file", "", "Kubeconfig file location to load Kubernetes token from. Defaults to KUBECONFIG env variable, then HOME/.kube/config if empty")
 
-	cmd.Flags().StringVar(&o.externalAuthProvider, "provider", "", "External authentication provider identifier. (slug_id)")
+	cmd.Flags().StringVar(&o.externalAuthnProvider, "provider", "", "External authentication provider identifier. (slug_id)")
 	return cmd
 }

@@ -92,8 +92,8 @@ func (k *k8sImpl) IsEnabled() bool {
 	return true
 }
 
-// IsNative implements [Authorization]
-func (k *k8sImpl) IsNative() bool {
+// IsNativeAuthz implements [Authorization]
+func (k *k8sImpl) IsNativeAuthz() bool {
 	return false
 }
 

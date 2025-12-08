@@ -31,10 +31,9 @@ import (
 type Authorization interface {
 	// IsEnabled returns true if the authorization is enabled, false otherwise.
 	IsEnabled() bool
-	// IsNative returns if the authentication is being handled internally or externally, ie. if the User
-	// information is saved in the perses backend. Currently only the k8s authentication provider is an
-	// external, or non-native, provider
-	IsNative() bool
+	// IsNativeAuthz returns if the authorization is being handled internally or is delegated, ie. if the User
+	// information is saved in the perses backend. Currently the only delegated authorization provider is k8s
+	IsNativeAuthz() bool
 	// GetUser returns the user information from the context. The user information will depend on the implementation.
 	// While implementing this method, consider that the user information is not guaranteed to be set in the context.
 	// You should consider the case where the context can be empty and that the function can be called from an anonymous endpoint.

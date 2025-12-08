@@ -334,7 +334,7 @@ security:
 						AccessTokenTTL:  common.Duration(DefaultAccessTokenTTL),
 						RefreshTokenTTL: common.Duration(DefaultRefreshTokenTTL),
 						DisableSignUp:   false,
-						Providers: AuthProviders{
+						Providers: AuthenticationProviders{
 							EnableNative: true,
 						},
 					},

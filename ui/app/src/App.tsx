@@ -17,7 +17,7 @@ import { ReactElement, Suspense } from 'react';
 import { ReactRouterProvider } from '@perses-dev/plugin-system';
 import Header from './components/Header/Header';
 import Footer from './components/Footer';
-import { ExternalAuthErrorRoute, SignInRoute, SignUpRoute } from './model/route';
+import { DelegatedAuthnErrorRoute, SignInRoute, SignUpRoute } from './model/route';
 import { PersesLoader } from './components/PersesLoader';
 
 function isDashboardViewRoute(pathname: string): boolean {
@@ -38,7 +38,7 @@ function App(): ReactElement {
     >
       {location.pathname !== SignInRoute &&
         location.pathname !== SignUpRoute &&
-        location.pathname !== ExternalAuthErrorRoute && <Header />}
+        location.pathname !== DelegatedAuthnErrorRoute && <Header />}
 
       <Box
         sx={{

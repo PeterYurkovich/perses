@@ -76,7 +76,7 @@ func (n *native) IsEnabled() bool {
 	return true
 }
 
-func (n *native) IsNative() bool {
+func (n *native) IsNativeAuthz() bool {
 	return true
 }
 

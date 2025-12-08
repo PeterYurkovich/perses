@@ -14,7 +14,7 @@
 export const AdminRoute = '/admin';
 export const SignInRoute = '/sign-in';
 export const SignUpRoute = '/sign-up';
-export const ExternalAuthErrorRoute = '/external-auth';
+export const DelegatedAuthnErrorRoute = '/delegated-auth-error';
 export const ConfigRoute = '/config';
 export const ImportRoute = '/import';
 export const ProjectRoute = '/projects';

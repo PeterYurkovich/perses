@@ -15,7 +15,7 @@ import { Button, LinearProgress, Link, TextField, Typography } from '@mui/materi
 import { ReactElement, useEffect, useState } from 'react';
 import { useSnackbar } from '@perses-dev/components';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { useNativeAuthMutation } from '../../model/auth/native-auth-client';
+import { useNativeAuthnMutation } from '../../model/auth/native-authn-client';
 import { useIsLoggedIn, useRedirectQueryParam } from '../../model/auth/auth-client';
 import { SignUpRoute } from '../../model/route';
 import { useIsSignUpDisable } from '../../context/Config';
@@ -23,7 +23,7 @@ import { SignWrapper } from './SignWrapper';
 
 function SignInView(): ReactElement {
   const isSignUpDisable = useIsSignUpDisable();
-  const authMutation = useNativeAuthMutation();
+  const authMutation = useNativeAuthnMutation();
   const isLoggedIn = useIsLoggedIn();
   const navigate = useNavigate();
   const { successSnackbar, exceptionSnackbar } = useSnackbar();

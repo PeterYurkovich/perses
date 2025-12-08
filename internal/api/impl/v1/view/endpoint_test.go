@@ -75,7 +75,7 @@ func (t *testRBAC) IsEnabled() bool {
 	return true
 }
 
-func (t *testRBAC) IsNative() bool {
+func (t *testRBAC) IsNativeAuthz() bool {
 	return true
 }
 

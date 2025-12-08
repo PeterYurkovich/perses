@@ -20,17 +20,17 @@ import buildURL from '../url-builder';
 import { userResource } from '../user-client';
 import { authResource } from './auth-client';
 
-export interface NativeAuthBody {
+interface NativeAuthnBody {
   login: string;
   password: string;
 }
 
-export function useNativeAuthMutation(): UseMutationResult<void, Error, NativeAuthBody> {
+export function useNativeAuthnMutation(): UseMutationResult<void, Error, NativeAuthnBody> {
   const queryClient = useQueryClient();
-  return useMutation<void, Error, NativeAuthBody>({
+  return useMutation<void, Error, NativeAuthnBody>({
     mutationKey: [authResource],
-    mutationFn: (body: NativeAuthBody) => {
-      return nativeAuth(body);
+    mutationFn: (body: NativeAuthnBody) => {
+      return nativeAuthn(body);
     },
     onSuccess: () => {
       Promise.all([
@@ -41,7 +41,7 @@ export function useNativeAuthMutation(): UseMutationResult<void, Error, NativeAu
   });
 }
 
-export function nativeAuth(body: NativeAuthBody): Promise<void> {
+function nativeAuthn(body: NativeAuthnBody): Promise<void> {
   const url = buildURL({ resource: `${authResource}/providers/native/login`, apiURL: '/api' });
   return fetchJson<void>(url, {
     method: HTTPMethodPOST,

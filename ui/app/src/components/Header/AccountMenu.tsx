@@ -19,12 +19,12 @@ import Logout from 'mdi-material-ui/Logout';
 import { Link as RouterLink } from 'react-router-dom';
 import { useUsername } from '../../model/auth/auth-client';
 import { ProfileRoute } from '../../model/route';
-import { useExternalAuthenticationProvider } from '../../context/Config';
+import { useIsDelegatedAuthnProviderEnabled } from '../../context/Config';
 import { ThemeSwitch } from './ThemeSwitch';
 
 export function AccountMenu(): ReactElement {
   const username = useUsername();
-  const externalAuthenticationProvider = useExternalAuthenticationProvider();
+  const isDelegatedAuthnProviderEnabled = useIsDelegatedAuthnProviderEnabled();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleMenu = (event: MouseEvent<HTMLElement>): void => {
@@ -69,9 +69,9 @@ export function AccountMenu(): ReactElement {
           </ListItemIcon>
           Profile
         </MenuItem>
-        {/* Since perses doesn't have control over external auth providers, don't show the
+        {/* Since perses doesn't have control over delegated authn providers, don't show the
           logout button when one is enabled */}
-        {externalAuthenticationProvider === 'none' && (
+        {!isDelegatedAuthnProviderEnabled && (
           <MenuItem component="a" href="/api/auth/logout">
             <ListItemIcon>
               <Logout />

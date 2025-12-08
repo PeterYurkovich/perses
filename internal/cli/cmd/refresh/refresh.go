@@ -30,10 +30,10 @@ type refreshOption interface {
 
 type option struct {
 	persesCMD.Option
-	writer       io.Writer
-	errWriter    io.Writer
-	apiClient    api.ClientInterface
-	externalAuth bool
+	writer         io.Writer
+	errWriter      io.Writer
+	apiClient      api.ClientInterface
+	delegatedAuthn bool
 }
 
 func (o *option) Complete(args []string) error {
@@ -51,17 +51,17 @@ func (o *option) Complete(args []string) error {
 		return err
 	}
 	if apiConfig.Security.Authentication.Providers.KubernetesProvider.Enable {
-		o.externalAuth = true
+		o.delegatedAuthn = true
 	}
 
 	return nil
 }
 
 func (o *option) Validate() error {
-	if !o.externalAuth && len(config.Global.RefreshToken) == 0 {
+	if !o.delegatedAuthn && len(config.Global.RefreshToken) == 0 {
 		return fmt.Errorf("refresh_token doesn't exist in the config, please use the command login to get one")
 	}
-	if o.externalAuth && len(config.Global.RestClientConfig.K8sAuth.KubeconfigFile) == 0 {
+	if o.delegatedAuthn && len(config.Global.RestClientConfig.K8sAuth.KubeconfigFile) == 0 {
 		return fmt.Errorf("kubeconfig location has not been set, please use the command login to set it")
 	}
 	return nil
@@ -97,7 +97,7 @@ func (o *option) newRefreshOption() (refreshOption, error) {
 			apiClient: apiClient,
 		}, nil
 	}
-	return &nativeRefresh{
+	return &nativeAndExternalAuthnRefresh{
 		apiClient: apiClient,
 	}, nil
 }

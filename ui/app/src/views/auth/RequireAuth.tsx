@@ -13,24 +13,13 @@
 
 import { ReactElement } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { useAuthorizationProvider, useIsAuthEnabled } from '../../context/Config';
+import { useIsAuthEnabled, useIsDelegatedAuthnProviderEnabled } from '../../context/Config';
 import { buildRedirectQueryString, useIsLoggedIn } from '../../model/auth/auth-client';
-import { ExternalAuthErrorRoute, SignInRoute } from '../../model/route';
-
-function RequireAuth(): ReactElement | null {
-  const provider = useAuthorizationProvider();
-  switch (provider) {
-    case 'external':
-      return <RequireExternalAuth />;
-    case 'native':
-    case 'none':
-    default:
-      return <RequireNativeAuth />;
-  }
-}
+import { DelegatedAuthnErrorRoute, SignInRoute } from '../../model/route';
 
 /**
- * This component aims to redirect the user to the SignIn page if not logged in.
+ * This component aims to redirect the user to the SignIn page if not logged in
+ * or to the delegated authn error page if there is an error with the delegated authn.
  * Otherwise, it just loads the underlying component(s) defined as children.
  * This is leveraging the following mechanism:
  * https://reactrouter.com/en/main/upgrading/v5#refactor-custom-routes
@@ -38,14 +27,15 @@ function RequireAuth(): ReactElement | null {
  * @param children
  * @constructor
  */
-function RequireNativeAuth(): ReactElement | null {
+function RequireAuth(): ReactElement | null {
+  const isDelegatedAuthnProviderEnabled = useIsDelegatedAuthnProviderEnabled();
   const isAuthEnabled = useIsAuthEnabled();
   const isLoggedIn = useIsLoggedIn();
   const location = useLocation();
   if (!isAuthEnabled || isLoggedIn) {
     return <Outlet />;
   }
-  let to = SignInRoute;
+  let to = isDelegatedAuthnProviderEnabled ? DelegatedAuthnErrorRoute : SignInRoute;
   if (location.pathname !== '' && location.pathname !== '/') {
     to += `?${buildRedirectQueryString(location.pathname + location.search)}`;
   }
@@ -60,19 +50,4 @@ function RequireAuthEnabled(): ReactElement {
   return <Outlet />;
 }
 
-function RequireExternalAuth(): ReactElement | null {
-  const isLoggedIn = useIsLoggedIn();
-  const location = useLocation();
-
-  if (isLoggedIn) {
-    return <Outlet />;
-  }
-
-  let to = ExternalAuthErrorRoute;
-  if (location.pathname !== '' && location.pathname !== '/') {
-    to += `?${buildRedirectQueryString(location.pathname + location.search)}`;
-  }
-  return <Navigate to={to} />;
-}
-
-export { RequireAuth, RequireAuthEnabled, RequireExternalAuth };
+export { RequireAuth, RequireAuthEnabled };

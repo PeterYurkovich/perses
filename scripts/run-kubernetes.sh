@@ -24,7 +24,6 @@ kubectl --kubeconfig=./dev/kubernetes/local/perses-backend config set-context --
 
 # Create a service account "user" which has all permissions related to perses resources
 kubectl --kubeconfig=./dev/kubernetes/local/kind-admin create serviceaccount user --namespace perses
-USER_TOKEN="$(kubectl --kubeconfig=./dev/kubernetes/local/kind-admin create token user --namespace perses)"
 
 # Install the perses CRD's into the cluster
 kubectl --kubeconfig=./dev/kubernetes/local/kind-admin apply -f https://raw.githubusercontent.com/perses/perses-operator/main/config/crd/bases/perses.dev_perses.yaml

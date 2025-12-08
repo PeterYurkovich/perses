@@ -373,7 +373,7 @@ kubernetes: <Kubernetes provider> # Optional
 
 ##### Native provider
 ```yaml
-# Determines if the native provider is enabled. If security.enable_auth is set to true and no other
+# Determines if the native authentication provider is enabled. If security.enable_auth is set to true and no other
 # providers are set then this value will be automatically set to true
 enable: <boolean> #Optional
 # Time interval that check if the RBAC cache need to be refreshed with db content. Only for SQL database setup.

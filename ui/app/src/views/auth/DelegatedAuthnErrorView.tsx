@@ -23,8 +23,8 @@ import { useDarkMode } from '../../context/DarkMode';
 import { useIsLaptopSize } from '../../utils/browser-size';
 import { useCurrentUser } from '../../model/user-client';
 
-function ExternalAuthErrorView(): ReactElement {
-  const authCheck = useCurrentUser();
+function DelegatedAuthnErrorView(): ReactElement {
+  const authnCheck = useCurrentUser();
   const navigate = useNavigate();
   const { isDarkModeEnabled } = useDarkMode();
   const { successSnackbar, exceptionSnackbar } = useSnackbar();
@@ -33,11 +33,11 @@ function ExternalAuthErrorView(): ReactElement {
   const isLaptopSize = useIsLaptopSize();
 
   useEffect(() => {
-    if (authCheck?.data?.metadata?.name) {
+    if (authnCheck?.data?.metadata?.name) {
       successSnackbar(`Successfully login`);
       navigate(redirectPath);
     }
-  }, [authCheck?.data?.metadata?.name, successSnackbar, navigate, exceptionSnackbar, redirectPath]);
+  }, [authnCheck?.data?.metadata?.name, successSnackbar, navigate, exceptionSnackbar, redirectPath]);
 
   return (
     <Stack
@@ -55,11 +55,11 @@ function ExternalAuthErrorView(): ReactElement {
         sx={{ marginTop: isLaptopSize ? '30vh' : undefined, marginBottom: isLaptopSize ? '30vh' : undefined }}
       />
       <Stack gap={1} sx={{ maxWidth: '85%', minWidth: '200px' }}>
-        {authCheck.status === 'loading' && <LinearProgress />}
-        {authCheck.status === 'error' && <ErrorAlert error={authCheck.error} />}
+        {authnCheck.status === 'loading' && <LinearProgress />}
+        {authnCheck.status === 'error' && <ErrorAlert error={authnCheck.error} />}
       </Stack>
     </Stack>
   );
 }
 
-export default ExternalAuthErrorView;
+export default DelegatedAuthnErrorView;

@@ -18,11 +18,11 @@ import (
 	"github.com/perses/perses/pkg/client/api"
 )
 
-type nativeRefresh struct {
+type nativeAndExternalAuthnRefresh struct {
 	apiClient api.ClientInterface
 }
 
-func (n *nativeRefresh) Refresh() error {
+func (n *nativeAndExternalAuthnRefresh) Refresh() error {
 	response, err := n.apiClient.Auth().Refresh(config.Global.RefreshToken)
 	if err != nil {
 		return err
