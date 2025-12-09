@@ -13,6 +13,7 @@
 
 import { fetchJson, Permission, StatusError, UserResource } from '@perses-dev/core';
 import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from '@tanstack/react-query';
+import { useIsAuthEnabled } from '../context/Config';
 import buildURL from './url-builder';
 import { HTTPHeader, HTTPMethodDELETE, HTTPMethodGET, HTTPMethodPOST, HTTPMethodPUT } from './http';
 import buildQueryKey from './querykey-builder';
@@ -101,11 +102,13 @@ export function useUser(name: string): UseQueryResult<UserResource, StatusError>
  * Will automatically be refreshed when cache is invalidated
  */
 export function useCurrentUser(): UseQueryResult<UserResource, StatusError> {
+  const isAuthEnabled = useIsAuthEnabled();
   return useQuery<UserResource, StatusError>({
     queryKey: buildQueryKey({ resource: userResource, name: 'me' }),
     queryFn: () => {
       return getCurrentUser();
     },
+    enabled: isAuthEnabled,
   });
 }
 
