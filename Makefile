@@ -166,7 +166,7 @@ build-ui:
 .PHONY: build-cli
 build-cli:
 	@echo ">> build the perses cli"
-	CGO_ENABLED=0 GOARCH=${GOARCH} GOOS=${GOOS} $(GO) build -ldflags "${LDFLAGS}" -o ./bin/percli ./cmd/percli
+	CGO_ENABLED=0 GOARCH=${GOARCH} GOOS=${GOOS} $(GO) build -ldflags "${LDFLAGS}" -mod=mod -o ./bin/percli ./cmd/percli
 
 .PHONY: generate
 generate: assets-compress install-default-plugins

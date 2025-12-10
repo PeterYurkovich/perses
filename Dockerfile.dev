@@ -1,17 +1,20 @@
-FROM node:20 AS node-builder
+FROM registry.redhat.io/ubi9/nodejs-22:9.6-1755075210 AS node-builder
+USER root
 WORKDIR /app
 COPY ui ui
 COPY Makefile Makefile
 RUN make build-ui
 
-FROM golang:1.25 AS go-builder
+FROM brew.registry.redhat.io/rh-osbs/openshift-golang-builder:rhel_9_golang_1.25 as go-builder
+USER root
 WORKDIR /go/src/github.com/perses/perses
 COPY . .
 COPY --from=node-builder /app/ui/app/dist ui/app/dist
-RUN mkdir /perses \
-  && mkdir /plugins \
-  && make build-api \
-  && make build-cli
+RUN mkdir /perses
+RUN mkdir /plugins
+ENV GOFLAGS="-mod=readonly"
+RUN make build-api
+RUN make build-cli
 
 FROM gcr.io/distroless/static-debian12:nonroot
 
@@ -24,7 +27,6 @@ COPY --from=go-builder --chown=nonroot:nonroot  /go/src/github.com/perses/perses
 COPY                                            docs/examples/config.docker.yaml     /etc/perses/config.yaml
 COPY --from=go-builder --chown=nonroot:nonroot  /perses            /perses
 COPY --from=go-builder --chown=nonroot:nonroot  /plugins           /etc/perses/plugins
-COPY --from=go-builder                          /etc/mime.types    /etc/mime.types
 
 WORKDIR /perses
 
