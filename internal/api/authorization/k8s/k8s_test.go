@@ -23,6 +23,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/perses/perses/pkg/model/api/v1/role"
+	v1Role "github.com/perses/perses/pkg/model/api/v1/role"
 	"github.com/stretchr/testify/assert"
 	authnv1 "k8s.io/api/authentication/v1"
 	authv1 "k8s.io/api/authorization/v1"
@@ -119,7 +120,8 @@ func newK8sMock(t *testing.T) *k8sImpl {
 	clientset := fake.NewClientset()
 
 	assert.NoError(t, createNamespace(clientset, "perses"))
-	assert.NoError(t, createNamespace(clientset, "test"))
+	assert.NoError(t, createNamespace(clientset, "project0"))
+	assert.NoError(t, createNamespace(clientset, "project1"))
 
 	mockAuthentication(clientset)
 	mockAuthorization(clientset)
@@ -213,7 +215,7 @@ func mockAuthorization(clientset *fake.Clientset) {
 	)
 }
 
-func TestCacheHasPermission(t *testing.T) {
+func TestHasPermission(t *testing.T) {
 	mockK8s := newK8sMock(t)
 
 	e := echo.New()
@@ -290,6 +292,92 @@ func TestCacheHasPermission(t *testing.T) {
 		t.Run(test.title, func(t *testing.T) {
 			req.Header.Set("Authorization", fmt.Sprintf("bearer %s-token", test.user))
 			assert.Equal(t, test.expectedResult, mockK8s.HasPermission(e.NewContext(req, rec), test.reqAction, test.reqProject, test.reqScope))
+		})
+	}
+}
+
+func TestGetUserProjects(t *testing.T) {
+	mockK8s := newK8sMock(t)
+
+	e := echo.New()
+	req := httptest.NewRequest(http.MethodPost, "/", strings.NewReader(""))
+	rec := httptest.NewRecorder()
+
+	testSuites := []struct {
+		title          string
+		user           string
+		expectedResult []string
+	}{
+		{
+			title:          "user1 has access to no projects",
+			user:           "user1",
+			expectedResult: []string{},
+		},
+		{
+			title:          "admin has access to all projects",
+			user:           "admin",
+			expectedResult: []string{"*", "perses", "project0", "project1"},
+		},
+		{
+			title:          "user0 has access to project0",
+			user:           "user0",
+			expectedResult: []string{"project0"},
+		},
+	}
+	for i := range testSuites {
+		test := testSuites[i]
+		t.Run(test.title, func(t *testing.T) {
+			req.Header.Set("Authorization", fmt.Sprintf("bearer %s-token", test.user))
+			userProjects, err := mockK8s.GetUserProjects(e.NewContext(req, rec), "", "")
+			assert.NoError(t, err)
+			assert.Equal(t, test.expectedResult, userProjects)
+		})
+	}
+}
+
+func TestGetPermissions(t *testing.T) {
+	mockK8s := newK8sMock(t)
+
+	e := echo.New()
+	req := httptest.NewRequest(http.MethodPost, "/", strings.NewReader(""))
+	rec := httptest.NewRecorder()
+
+	testSuites := []struct {
+		title          string
+		user           string
+		expectedResult map[string][]*v1Role.Permission
+	}{
+		{
+			title:          "user1 has no permissions",
+			user:           "user1",
+			expectedResult: map[string][]*v1Role.Permission{},
+		},
+		{
+			title: "admin has full permissions to all projects",
+			user:  "admin",
+			expectedResult: map[string][]*v1Role.Permission{"*": {
+				&v1Role.Permission{Actions: []role.Action{"*"}, Scopes: []role.Scope{"Dashboard"}},
+				&v1Role.Permission{Actions: []role.Action{"*"}, Scopes: []role.Scope{"GlobalDatasource"}},
+				&v1Role.Permission{Actions: []role.Action{"*"}, Scopes: []role.Scope{"Datasource"}},
+			}},
+		},
+		{
+			title: "user0 has readonly permissions in project0",
+			user:  "user0",
+			expectedResult: map[string][]*v1Role.Permission{"project0": {
+				&v1Role.Permission{Actions: []role.Action{"read"}, Scopes: []role.Scope{"Dashboard"}},
+				&v1Role.Permission{Actions: []role.Action{"read"}, Scopes: []role.Scope{"GlobalDatasource"}},
+				&v1Role.Permission{Actions: []role.Action{"read"}, Scopes: []role.Scope{"Datasource"}},
+			}},
+		},
+	}
+	for i := range testSuites {
+		test := testSuites[i]
+		t.Run(test.title, func(t *testing.T) {
+			req.Header.Set("Authorization", fmt.Sprintf("bearer %s-token", test.user))
+			userPermissions, err := mockK8s.GetPermissions(e.NewContext(req, rec))
+			assert.NoError(t, err)
+			assert.Equal(t, test.expectedResult, userPermissions)
 		})
 	}
 }
