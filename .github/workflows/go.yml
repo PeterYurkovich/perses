@@ -78,6 +78,9 @@ jobs:
           enable_go: true
           enable_cue: true # needed for DaC CLI commands unit tests
           cue_version: "v0.15.0"
+          enable_kubectl: true
+          kubectl_verion: "v1.34.0"
+          enable_kind: true
       - name: test
         run: make integration-test
   test-windows:

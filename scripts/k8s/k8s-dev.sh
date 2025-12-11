@@ -9,7 +9,7 @@ if [ "$SESSION_EXISTS" != "" ]; then
     exit 0
 fi
 
-USER_TOKEN=$(kubectl --kubeconfig=./dev/kubernetes/local/kind-admin create token user --namespace perses --duration 8760h)
+USER_TOKEN=$(kubectl create token user --namespace perses --duration 8760h)
 
 tmux new-session -d -s $SESSION
 

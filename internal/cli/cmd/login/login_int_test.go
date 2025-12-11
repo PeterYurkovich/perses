@@ -18,12 +18,14 @@ package login
 import (
 	"fmt"
 	"net/http/httptest"
+	"path/filepath"
 	"testing"
 
 	"github.com/gavv/httpexpect/v2"
 	"github.com/perses/perses/internal/api/dependency"
 	e2eframework "github.com/perses/perses/internal/api/e2e/framework"
 	cmdTest "github.com/perses/perses/internal/cli/test"
+
 	modelAPI "github.com/perses/perses/pkg/model/api"
 )
 
@@ -100,5 +102,34 @@ successfully logged in %s
 		}}
 		cmdTest.ExecuteSuiteTest(t, NewCMD, testSuite)
 		return usersCreatedByTheSuite
+	})
+}
+
+func TestLoginK8s(t *testing.T) {
+	kubeconfigPath := filepath.Join("..", "..", "..", "..", "dev", "kubernetes", "local")
+	userPath := filepath.Join(kubeconfigPath, "user")
+	backendPath := filepath.Join(kubeconfigPath, "perses-backend")
+
+	conf := e2eframework.DefaultAuthConfig()
+	conf.Security.Authentication.Providers.KubernetesProvider.Enable = true
+	conf.Security.Authorization.Provider.Kubernetes.Enable = true
+	conf.Security.Authorization.Provider.Kubernetes.Kubeconfig = backendPath
+
+	conf.Security.Authorization.Provider.Native.Enable = false
+	conf.Security.Authentication.Providers.EnableNative = false
+
+	e2eframework.WithServerConfig(t, conf, func(server *httptest.Server, expect *httpexpect.Expect, manager dependency.PersistenceManager) []modelAPI.Entity {
+
+		testSuite := []cmdTest.Suite{}
+		testSuite = append(testSuite, cmdTest.Suite{
+			Title:           "user login",
+			Args:            []string{server.URL, "--kube", fmt.Sprintf("--kubeconfig-file=%s", userPath)},
+			ExpectedMessage: fmt.Sprintf("successfully logged in %s\n", server.URL),
+			IsErrorExpected: false,
+		})
+
+		cmdTest.ExecuteSuiteTest(t, NewCMD, testSuite)
+
+		return nil
 	})
 }
