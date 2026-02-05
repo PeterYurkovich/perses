@@ -44,6 +44,7 @@ var (
 		"/admin",
 		"/sign-in",
 		"/sign-up",
+		"/delegated-auth-error",
 		"/projects",
 		"/import",
 		"/config",
